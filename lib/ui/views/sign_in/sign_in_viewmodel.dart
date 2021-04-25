@@ -11,6 +11,7 @@ import 'sign_in_view.form.dart';
 class SignInViewModel extends FormViewModel {
   final _navigationService = locator<NavigationService>();
   final _authService = locator<AuthenticationService>();
+  final _snackbarService = locator<SnackbarService>();
   final _logger = Logger();
 
   @override
@@ -27,8 +28,9 @@ class SignInViewModel extends FormViewModel {
     setBusy(false);
 
     if (user == null) {
-      setValidationMessage('Incorrect email or password, please try again');
-      notifyListeners();
+      _snackbarService.showSnackbar(
+        message: 'Incorrect email or password, please try again',
+      );
 
       return;
     }

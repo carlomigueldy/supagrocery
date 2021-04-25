@@ -71,6 +71,7 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
                   SizedBox(height: 30),
                   AppButton(
                     label: 'Create Account',
+                    loading: viewModel.isBusy,
                     onPressed: () {
                       viewModel.signUp();
                     },

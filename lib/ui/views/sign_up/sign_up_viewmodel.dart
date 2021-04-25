@@ -12,6 +12,7 @@ class SignUpViewModel extends FormViewModel {
   final _logger = Logger();
   final _navigationService = locator<NavigationService>();
   final _authService = locator<AuthenticationService>();
+  final _snackbarService = locator<SnackbarService>();
 
   @override
   void setFormStatus() {
@@ -19,6 +20,7 @@ class SignUpViewModel extends FormViewModel {
   }
 
   Future<void> signUp() async {
+    setBusy(true);
     _logger.i(formValueMap);
 
     final user = await _authService.signUp(
@@ -28,10 +30,12 @@ class SignUpViewModel extends FormViewModel {
         name: nameValue!,
       ),
     );
+    setBusy(false);
 
     if (user == null) {
-      setValidationMessage('Incorrect email or password, please try again');
-      notifyListeners();
+      _snackbarService.showSnackbar(
+        message: 'Incorrect email or password, please try again',
+      );
 
       return;
     }
