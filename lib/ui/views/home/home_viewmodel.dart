@@ -45,4 +45,9 @@ class HomeViewModel extends FutureViewModel<List<Grocery>> {
       arguments: GroceryDetailViewArguments(id: id),
     );
   }
+
+  void signOut() {
+    _authService.signOut();
+    _navigationService.replaceWith(Routes.signInView);
+  }
 }

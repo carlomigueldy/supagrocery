@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:supagrocery/datamodels/application_models.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/app_button.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_padding.dart';
 
 import 'home_viewmodel.dart';
@@ -22,6 +23,16 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
     return Scaffold(
       appBar: AppBar(
         title: Text('SupaGrocery'),
+      ),
+      drawer: Drawer(
+        child: AppHPadding(
+          child: Center(
+            child: AppButton(
+              label: 'Logout',
+              onPressed: viewModel.signOut,
+            ),
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

@@ -41,6 +41,7 @@ class SignUpViewModel extends FormViewModel {
     }
 
     await _navigationService.replaceWith(Routes.homeView);
+    _snackbarService.showSnackbar(message: 'You have created an account');
   }
 
   void toSignInView() {

@@ -36,6 +36,7 @@ class SignInViewModel extends FormViewModel {
     }
 
     await _navigationService.replaceWith(Routes.homeView);
+    _snackbarService.showSnackbar(message: 'You have signed in successfully');
   }
 
   void toSignUpView() {
