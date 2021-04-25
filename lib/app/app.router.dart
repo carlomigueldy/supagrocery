@@ -15,14 +15,17 @@ import '../ui/views/create_product/create_product_view.dart';
 import '../ui/views/grocery_detail/grocery_detail_view.dart';
 import '../ui/views/home/home_view.dart';
 import '../ui/views/product_selection/product_selection_view.dart';
+import '../ui/views/startup/startup_view.dart';
 
 class Routes {
-  static const String homeView = '/';
+  static const String startupView = '/';
+  static const String homeView = '/home-view';
   static const String createGroceryView = '/create-grocery-view';
   static const String createProductView = '/create-product-view';
   static const String groceryDetailView = '/grocery-detail-view';
   static const String productSelectionView = '/product-selection-view';
   static const all = <String>{
+    startupView,
     homeView,
     createGroceryView,
     createProductView,
@@ -35,6 +38,7 @@ class StackedRouter extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
+    RouteDef(Routes.startupView, page: StartupView),
     RouteDef(Routes.homeView, page: HomeView),
     RouteDef(Routes.createGroceryView, page: CreateGroceryView),
     RouteDef(Routes.createProductView, page: CreateProductView),
@@ -44,6 +48,12 @@ class StackedRouter extends RouterBase {
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, StackedRouteFactory>{
+    StartupView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => StartupView(),
+        settings: data,
+      );
+    },
     HomeView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => HomeView(),

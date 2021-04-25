@@ -27,7 +27,7 @@ class HomeView extends StatelessWidget {
           ),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
-            onPressed: model.toCreateGroceryListView,
+            onPressed: model.toCreateGroceryView,
           ),
           body: ListView.builder(
             itemCount: 30,

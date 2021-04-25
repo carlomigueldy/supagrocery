@@ -6,7 +6,7 @@ import 'package:stacked_starter_template/app/app.router.dart';
 class HomeViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
-  void toCreateGroceryListView() {
-    // _navigationService.navigateTo(routeName)
+  void toCreateGroceryView() {
+    _navigationService.navigateTo(Routes.createGroceryView);
   }
 }
