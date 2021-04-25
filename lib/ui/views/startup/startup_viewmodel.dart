@@ -10,7 +10,7 @@ class StartupViewModel extends BaseViewModel {
   final _navigationService = locator<NavigationService>();
 
   Future<void> runStartupLogic() async {
-    await Future.delayed(Duration(seconds: 3));
+    // await Future.delayed(Duration(seconds: 3));
 
     await _authService.initialize();
 
