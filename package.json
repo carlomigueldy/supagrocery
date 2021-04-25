@@ -1,0 +1,31 @@
+{
+  "name": "@carlomigueldy/flutter-supabase-grocery-app",
+  "version": "1.0.0",
+  "description": "Flutter commands helper",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "flutter test",
+    "generate": "flutter pub run build_runner build --delete-conflicting-outputs",
+    "refresh": "flutter clean && flutter pub get && npm run generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlomigueldy/flutter-supabase-todo-app.git"
+  },
+  "keywords": [
+    "flutter",
+    "stacked",
+    "supabase",
+    "dart"
+  ],
+  "author": "Carlo Miguel Dy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/carlomigueldy/flutter-supabase-todo-app/issues"
+  },
+  "homepage": "https://github.com/carlomigueldy/flutter-supabase-todo-app#readme"
+}

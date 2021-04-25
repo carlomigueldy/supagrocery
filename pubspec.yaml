@@ -35,12 +35,17 @@ dependencies:
 
   google_fonts: ^2.0.0
 
+  supabase:
+  freezed_annotation:
+  json_serializable: 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   build_runner:
   stacked_generator:
+  freezed:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
