@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:supagrocery/app/app.locator.dart';
@@ -12,9 +13,9 @@ class StartupViewModel extends BaseViewModel {
     await _authService.initialize();
 
     if (_authService.hasUser) {
-      return _navigationService.navigateTo(Routes.homeView);
+      return _navigationService.replaceWith(Routes.homeView);
     }
 
-    return _navigationService.navigateTo(Routes.signInView);
+    return _navigationService.replaceWith(Routes.signInView);
   }
 }

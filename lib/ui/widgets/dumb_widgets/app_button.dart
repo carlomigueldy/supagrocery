@@ -12,17 +12,22 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: onPressed,
-      child: Text(
-        label,
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: MaterialButton(
+        height: 50,
+        onPressed: onPressed,
+        child: Text(
+          label,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 16,
+          ),
         ),
+        color: Theme.of(context).primaryColor,
+        textColor: Colors.white,
+        elevation: 0,
       ),
-      color: Theme.of(context).primaryColor,
-      textColor: Colors.white,
-      elevation: 0,
     );
   }
 }

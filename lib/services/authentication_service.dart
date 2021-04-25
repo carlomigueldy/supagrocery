@@ -1,13 +1,20 @@
+import 'package:logger/logger.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:supagrocery/app/app.locator.dart';
 import 'package:supagrocery/app/supabase_api.dart';
 import 'package:supagrocery/datamodels/application_models.dart';
 
 class AuthenticationService {
+  final _navigationService = locator<NavigationService>();
+
+  final _logger = Logger();
   AppUser? _user = null;
   AppUser? get user => _user;
   bool get hasUser => _user != null;
 
   Future<void> initialize() async {
     final authUser = supabase.auth.user();
+    _logger.i(authUser);
 
     if (authUser == null) {
       return;
@@ -16,17 +23,18 @@ class AuthenticationService {
     await fetchUser(id: authUser.id);
   }
 
-  Future signIn({required String email, required String password}) async {
+  Future<AppUser?> signIn(
+      {required String email, required String password}) async {
     final response = await supabase.auth.signIn(
       email: email,
       password: password,
     );
 
     if (response.error != null) {
-      return false;
+      return null;
     }
 
-    return false;
+    return await fetchUser(id: response.data!.user!.id);
   }
 
   Future<void> signOut() async {
@@ -42,6 +50,7 @@ class AuthenticationService {
     }
 
     final data = AppUser.fromJson(response.data);
+    _logger.i(data);
     _user = data;
 
     return data;

@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^2.0.0
 
   supabase: ^0.0.1-dev.13
+  form_validator: ^0.1.7
   freezed_annotation:
   json_serializable:
   json_annotation:
@@ -60,7 +61,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
