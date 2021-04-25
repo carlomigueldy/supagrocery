@@ -3,43 +3,39 @@ import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
   @override
-  Widget build(BuildContext context) {
-    return ViewModelBuilder<HomeViewModel>.reactive(
-      viewModelBuilder: () => HomeViewModel(),
-      builder: (
-        BuildContext context,
-        HomeViewModel model,
-        Widget? child,
-      ) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Grocery App',
-            ),
-            actions: [
-              IconButton(
-                icon: Icon(Icons.people_outline),
-                onPressed: () {},
+  Widget builder(
+    BuildContext context,
+    HomeViewModel viewModel,
+    Widget? child,
+  ) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('SupaGrocery'),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: viewModel.toCreateGroceryView,
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 30),
+            Text(
+              'Welcome back ${viewModel.user!.name}',
+              style: TextStyle(
+                fontSize: 24,
               ),
-            ],
-          ),
-          floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: model.toCreateGroceryView,
-          ),
-          body: ListView.builder(
-            itemCount: 30,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(index.toString()),
-                onTap: () {},
-              );
-            },
-          ),
-        );
-      },
+            ),
+          ],
+        ),
+      ),
     );
+  }
+
+  @override
+  HomeViewModel viewModelBuilder(BuildContext context) {
+    return HomeViewModel();
   }
 }

@@ -31,9 +31,7 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
     Widget? child,
   ) {
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
         appBar: AppBar(
           title: Text("Sign Up"),

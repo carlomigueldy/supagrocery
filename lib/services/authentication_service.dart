@@ -1,24 +1,31 @@
 import 'package:gotrue/src/user.dart';
 import 'package:logger/logger.dart';
 import 'package:postgrest/src/postgrest_response.dart';
+import 'package:supagrocery/app/app.locator.dart';
 import 'package:supagrocery/app/supabase_api.dart';
 import 'package:supagrocery/datamodels/application_models.dart';
+import 'package:supagrocery/services/local_storage_service.dart';
 
 class AuthenticationService {
   final _logger = Logger();
+  final _localStorageService = locator<LocalStorageService>();
+
   AppUser? _user = null;
   AppUser? get user => _user;
   bool get hasUser => _user != null;
 
   Future<void> initialize() async {
-    final authUser = supabase.auth.user();
-    _logger.i(authUser);
+    final accessToken = await _localStorageService.getItem('token');
+    _logger.i(accessToken);
 
-    if (authUser == null) {
+    if (accessToken == null) {
       return;
     }
 
-    await fetchUser(id: authUser.id);
+    final response = await supabase.auth.api.getUser(accessToken);
+    final user = response.data!;
+    _logger.i(user.toJson());
+    await fetchUser(id: user.id);
   }
 
   Future<AppUser?> signIn({required AuthDto payload}) async {
@@ -32,6 +39,7 @@ class AuthenticationService {
       return null;
     }
     _logger.i(response.data);
+    await _localStorageService.setItem('token', response.data!.accessToken);
     return await fetchUser(id: response.data!.user!.id);
   }
 
@@ -47,6 +55,7 @@ class AuthenticationService {
     final user = response.data!.user!;
     _logger.i(user.toJson());
     await _createUser(user, payload);
+    await _localStorageService.setItem('token', response.data!.accessToken);
     return await fetchUser(id: user.id);
   }
 
@@ -57,9 +66,8 @@ class AuthenticationService {
       _logger.e(response.error!.message);
       return;
     }
-
     _logger.i(response.rawData);
-
+    await _localStorageService.removeItem('token');
     return;
   }
 

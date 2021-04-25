@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class AppButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final String label;
+  final bool? loading;
 
   const AppButton({
     Key? key,
     required this.label,
     this.onPressed,
+    this.loading = false,
   }) : super(key: key);
 
   @override
@@ -17,16 +19,24 @@ class AppButton extends StatelessWidget {
       child: MaterialButton(
         height: 50,
         onPressed: onPressed,
-        child: Text(
-          label,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
-        ),
+        child: loading!
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : _text(),
         color: Theme.of(context).primaryColor,
         textColor: Colors.white,
         elevation: 0,
+      ),
+    );
+  }
+
+  Text _text() {
+    return Text(
+      label,
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
       ),
     );
   }

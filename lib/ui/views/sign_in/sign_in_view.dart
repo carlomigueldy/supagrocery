@@ -30,9 +30,7 @@ class SignInView extends ViewModelBuilderWidget<SignInViewModel>
     Widget? child,
   ) {
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).requestFocus(FocusNode());
-      },
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
       child: Scaffold(
         appBar: AppBar(
           title: Text("Sign In"),
@@ -66,6 +64,7 @@ class SignInView extends ViewModelBuilderWidget<SignInViewModel>
                   SizedBox(height: 30),
                   AppButton(
                     label: 'Sign In',
+                    loading: viewModel.isBusy,
                     onPressed: () {
                       viewModel.signIn();
                     },
