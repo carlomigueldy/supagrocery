@@ -20,6 +20,7 @@ class Grocery with _$Grocery {
   const factory Grocery({
     required String id,
     required String name,
+    @JsonKey(name: 'created_by') required String createdBy,
   }) = _Grocery;
 
   factory Grocery.fromJson(Map<String, dynamic> json) =>
@@ -30,6 +31,7 @@ class Grocery with _$Grocery {
 class GroceryDto with _$GroceryDto {
   const factory GroceryDto({
     required String name,
+    @JsonKey(name: 'created_by') required String createdBy,
   }) = _GroceryDto;
 
   factory GroceryDto.fromJson(Map<String, dynamic> json) =>
@@ -41,6 +43,7 @@ class Product with _$Product {
   const factory Product({
     required String id,
     required String name,
+    @JsonKey(name: 'created_by') required String createdBy,
   }) = _Product;
 
   factory Product.fromJson(Map<String, dynamic> json) =>
@@ -51,6 +54,7 @@ class Product with _$Product {
 class ProductDto with _$ProductDto {
   const factory ProductDto({
     required String name,
+    @JsonKey(name: 'created_by') required String createdBy,
   }) = _ProductDto;
 
   factory ProductDto.fromJson(Map<String, dynamic> json) =>

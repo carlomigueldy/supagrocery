@@ -21,39 +21,46 @@ class StartupView extends ViewModelBuilderWidget<StartupViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [SupabaseLogo()],
+      body: SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            minHeight: MediaQuery.of(context).size.height,
           ),
-          SizedBox(height: 15),
-          Text(
-            'SupaGrocery',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-          SizedBox(height: 50),
-          Text('Simple grocery app powered by Supabase'),
-          SizedBox(height: 5),
-          Row(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('Built by'),
-              SizedBox(width: 5),
-              AppTextButton(
-                label: '@CarloMiguelDy',
-                onTap: () async {
-                  await launch('https://twitter.com/CarloMiguelDy');
-                },
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [SupabaseLogo()],
+              ),
+              SizedBox(height: 15),
+              Text(
+                'SupaGrocery',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+              SizedBox(height: 50),
+              Text('Simple grocery app powered by Supabase'),
+              SizedBox(height: 5),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Built by'),
+                  SizedBox(width: 5),
+                  AppTextButton(
+                    label: '@CarloMiguelDy',
+                    onTap: () async {
+                      await launch('https://twitter.com/CarloMiguelDy');
+                    },
+                  ),
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

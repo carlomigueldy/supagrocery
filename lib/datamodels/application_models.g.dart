@@ -25,6 +25,7 @@ _$_Grocery _$_$_GroceryFromJson(Map<String, dynamic> json) {
   return _$_Grocery(
     id: json['id'] as String,
     name: json['name'] as String,
+    createdBy: json['created_by'] as String,
   );
 }
 
@@ -32,23 +33,27 @@ Map<String, dynamic> _$_$_GroceryToJson(_$_Grocery instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'created_by': instance.createdBy,
     };
 
 _$_GroceryDto _$_$_GroceryDtoFromJson(Map<String, dynamic> json) {
   return _$_GroceryDto(
     name: json['name'] as String,
+    createdBy: json['created_by'] as String,
   );
 }
 
 Map<String, dynamic> _$_$_GroceryDtoToJson(_$_GroceryDto instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'created_by': instance.createdBy,
     };
 
 _$_Product _$_$_ProductFromJson(Map<String, dynamic> json) {
   return _$_Product(
     id: json['id'] as String,
     name: json['name'] as String,
+    createdBy: json['created_by'] as String,
   );
 }
 
@@ -56,17 +61,20 @@ Map<String, dynamic> _$_$_ProductToJson(_$_Product instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'created_by': instance.createdBy,
     };
 
 _$_ProductDto _$_$_ProductDtoFromJson(Map<String, dynamic> json) {
   return _$_ProductDto(
     name: json['name'] as String,
+    createdBy: json['created_by'] as String,
   );
 }
 
 Map<String, dynamic> _$_$_ProductDtoToJson(_$_ProductDto instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'created_by': instance.createdBy,
     };
 
 _$_GroceryProduct _$_$_GroceryProductFromJson(Map<String, dynamic> json) {

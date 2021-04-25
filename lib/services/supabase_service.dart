@@ -1,17 +1,24 @@
 import 'package:logger/logger.dart';
 import 'package:postgrest/postgrest.dart';
+import 'package:supagrocery/app/app.locator.dart';
 import 'package:supagrocery/app/supabase_api.dart';
+import 'package:supagrocery/services/authentication_service.dart';
 
 abstract class SupabaseService<T> {
+  final _authService = locator<AuthenticationService>();
   final _logger = Logger();
 
   String tableName() {
     return "";
   }
 
-  Future<PostgrestResponse> all(String id) async {
-    _logger.i(tableName() + ' ' + id);
-    final response = await supabase.from(tableName()).select().execute();
+  Future<PostgrestResponse> all() async {
+    _logger.i(tableName());
+    final response = await supabase
+        .from(tableName())
+        .select()
+        .eq('created_by', _authService.user!.id)
+        .execute();
     _logger.i(response.toJson());
     return response;
   }

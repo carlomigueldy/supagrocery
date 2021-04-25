@@ -205,10 +205,14 @@ Grocery _$GroceryFromJson(Map<String, dynamic> json) {
 class _$GroceryTearOff {
   const _$GroceryTearOff();
 
-  _Grocery call({required String id, required String name}) {
+  _Grocery call(
+      {required String id,
+      required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) {
     return _Grocery(
       id: id,
       name: name,
+      createdBy: createdBy,
     );
   }
 
@@ -224,6 +228,8 @@ const $Grocery = _$GroceryTearOff();
 mixin _$Grocery {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -234,7 +240,8 @@ mixin _$Grocery {
 abstract class $GroceryCopyWith<$Res> {
   factory $GroceryCopyWith(Grocery value, $Res Function(Grocery) then) =
       _$GroceryCopyWithImpl<$Res>;
-  $Res call({String id, String name});
+  $Res call(
+      {String id, String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -249,6 +256,7 @@ class _$GroceryCopyWithImpl<$Res> implements $GroceryCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -259,6 +267,10 @@ class _$GroceryCopyWithImpl<$Res> implements $GroceryCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -268,7 +280,8 @@ abstract class _$GroceryCopyWith<$Res> implements $GroceryCopyWith<$Res> {
   factory _$GroceryCopyWith(_Grocery value, $Res Function(_Grocery) then) =
       __$GroceryCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name});
+  $Res call(
+      {String id, String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -284,6 +297,7 @@ class __$GroceryCopyWithImpl<$Res> extends _$GroceryCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_Grocery(
       id: id == freezed
@@ -294,6 +308,10 @@ class __$GroceryCopyWithImpl<$Res> extends _$GroceryCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -302,7 +320,10 @@ class __$GroceryCopyWithImpl<$Res> extends _$GroceryCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Grocery implements _Grocery {
-  const _$_Grocery({required this.id, required this.name});
+  const _$_Grocery(
+      {required this.id,
+      required this.name,
+      @JsonKey(name: 'created_by') required this.createdBy});
 
   factory _$_Grocery.fromJson(Map<String, dynamic> json) =>
       _$_$_GroceryFromJson(json);
@@ -311,10 +332,13 @@ class _$_Grocery implements _Grocery {
   final String id;
   @override
   final String name;
+  @override
+  @JsonKey(name: 'created_by')
+  final String createdBy;
 
   @override
   String toString() {
-    return 'Grocery(id: $id, name: $name)';
+    return 'Grocery(id: $id, name: $name, createdBy: $createdBy)';
   }
 
   @override
@@ -324,14 +348,18 @@ class _$_Grocery implements _Grocery {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.createdBy, createdBy) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdBy, createdBy)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(createdBy);
 
   @JsonKey(ignore: true)
   @override
@@ -345,8 +373,10 @@ class _$_Grocery implements _Grocery {
 }
 
 abstract class _Grocery implements Grocery {
-  const factory _Grocery({required String id, required String name}) =
-      _$_Grocery;
+  const factory _Grocery(
+      {required String id,
+      required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) = _$_Grocery;
 
   factory _Grocery.fromJson(Map<String, dynamic> json) = _$_Grocery.fromJson;
 
@@ -354,6 +384,9 @@ abstract class _Grocery implements Grocery {
   String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$GroceryCopyWith<_Grocery> get copyWith =>
@@ -368,9 +401,12 @@ GroceryDto _$GroceryDtoFromJson(Map<String, dynamic> json) {
 class _$GroceryDtoTearOff {
   const _$GroceryDtoTearOff();
 
-  _GroceryDto call({required String name}) {
+  _GroceryDto call(
+      {required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) {
     return _GroceryDto(
       name: name,
+      createdBy: createdBy,
     );
   }
 
@@ -385,6 +421,8 @@ const $GroceryDto = _$GroceryDtoTearOff();
 /// @nodoc
 mixin _$GroceryDto {
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -397,7 +435,7 @@ abstract class $GroceryDtoCopyWith<$Res> {
   factory $GroceryDtoCopyWith(
           GroceryDto value, $Res Function(GroceryDto) then) =
       _$GroceryDtoCopyWithImpl<$Res>;
-  $Res call({String name});
+  $Res call({String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -411,11 +449,16 @@ class _$GroceryDtoCopyWithImpl<$Res> implements $GroceryDtoCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -427,7 +470,7 @@ abstract class _$GroceryDtoCopyWith<$Res> implements $GroceryDtoCopyWith<$Res> {
           _GroceryDto value, $Res Function(_GroceryDto) then) =
       __$GroceryDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String name});
+  $Res call({String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -443,11 +486,16 @@ class __$GroceryDtoCopyWithImpl<$Res> extends _$GroceryDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_GroceryDto(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -457,17 +505,22 @@ class __$GroceryDtoCopyWithImpl<$Res> extends _$GroceryDtoCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_GroceryDto implements _GroceryDto {
-  const _$_GroceryDto({required this.name});
+  const _$_GroceryDto(
+      {required this.name,
+      @JsonKey(name: 'created_by') required this.createdBy});
 
   factory _$_GroceryDto.fromJson(Map<String, dynamic> json) =>
       _$_$_GroceryDtoFromJson(json);
 
   @override
   final String name;
+  @override
+  @JsonKey(name: 'created_by')
+  final String createdBy;
 
   @override
   String toString() {
-    return 'GroceryDto(name: $name)';
+    return 'GroceryDto(name: $name, createdBy: $createdBy)';
   }
 
   @override
@@ -475,12 +528,17 @@ class _$_GroceryDto implements _GroceryDto {
     return identical(this, other) ||
         (other is _GroceryDto &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.createdBy, createdBy) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdBy, createdBy)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(createdBy);
 
   @JsonKey(ignore: true)
   @override
@@ -494,13 +552,18 @@ class _$_GroceryDto implements _GroceryDto {
 }
 
 abstract class _GroceryDto implements GroceryDto {
-  const factory _GroceryDto({required String name}) = _$_GroceryDto;
+  const factory _GroceryDto(
+      {required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) = _$_GroceryDto;
 
   factory _GroceryDto.fromJson(Map<String, dynamic> json) =
       _$_GroceryDto.fromJson;
 
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$GroceryDtoCopyWith<_GroceryDto> get copyWith =>
@@ -515,10 +578,14 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 class _$ProductTearOff {
   const _$ProductTearOff();
 
-  _Product call({required String id, required String name}) {
+  _Product call(
+      {required String id,
+      required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) {
     return _Product(
       id: id,
       name: name,
+      createdBy: createdBy,
     );
   }
 
@@ -534,6 +601,8 @@ const $Product = _$ProductTearOff();
 mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -544,7 +613,8 @@ mixin _$Product {
 abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res>;
-  $Res call({String id, String name});
+  $Res call(
+      {String id, String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -559,6 +629,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -569,6 +640,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -578,7 +653,8 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) then) =
       __$ProductCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name});
+  $Res call(
+      {String id, String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -594,6 +670,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_Product(
       id: id == freezed
@@ -604,6 +681,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -612,7 +693,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_Product implements _Product {
-  const _$_Product({required this.id, required this.name});
+  const _$_Product(
+      {required this.id,
+      required this.name,
+      @JsonKey(name: 'created_by') required this.createdBy});
 
   factory _$_Product.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductFromJson(json);
@@ -621,10 +705,13 @@ class _$_Product implements _Product {
   final String id;
   @override
   final String name;
+  @override
+  @JsonKey(name: 'created_by')
+  final String createdBy;
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name)';
+    return 'Product(id: $id, name: $name, createdBy: $createdBy)';
   }
 
   @override
@@ -634,14 +721,18 @@ class _$_Product implements _Product {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.createdBy, createdBy) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdBy, createdBy)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(createdBy);
 
   @JsonKey(ignore: true)
   @override
@@ -655,8 +746,10 @@ class _$_Product implements _Product {
 }
 
 abstract class _Product implements Product {
-  const factory _Product({required String id, required String name}) =
-      _$_Product;
+  const factory _Product(
+      {required String id,
+      required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) = _$_Product;
 
   factory _Product.fromJson(Map<String, dynamic> json) = _$_Product.fromJson;
 
@@ -664,6 +757,9 @@ abstract class _Product implements Product {
   String get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductCopyWith<_Product> get copyWith =>
@@ -678,9 +774,12 @@ ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
 class _$ProductDtoTearOff {
   const _$ProductDtoTearOff();
 
-  _ProductDto call({required String name}) {
+  _ProductDto call(
+      {required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) {
     return _ProductDto(
       name: name,
+      createdBy: createdBy,
     );
   }
 
@@ -695,6 +794,8 @@ const $ProductDto = _$ProductDtoTearOff();
 /// @nodoc
 mixin _$ProductDto {
   String get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -707,7 +808,7 @@ abstract class $ProductDtoCopyWith<$Res> {
   factory $ProductDtoCopyWith(
           ProductDto value, $Res Function(ProductDto) then) =
       _$ProductDtoCopyWithImpl<$Res>;
-  $Res call({String name});
+  $Res call({String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -721,11 +822,16 @@ class _$ProductDtoCopyWithImpl<$Res> implements $ProductDtoCopyWith<$Res> {
   @override
   $Res call({
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -737,7 +843,7 @@ abstract class _$ProductDtoCopyWith<$Res> implements $ProductDtoCopyWith<$Res> {
           _ProductDto value, $Res Function(_ProductDto) then) =
       __$ProductDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String name});
+  $Res call({String name, @JsonKey(name: 'created_by') String createdBy});
 }
 
 /// @nodoc
@@ -753,11 +859,16 @@ class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = freezed,
+    Object? createdBy = freezed,
   }) {
     return _then(_ProductDto(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdBy: createdBy == freezed
+          ? _value.createdBy
+          : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -767,17 +878,22 @@ class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_ProductDto implements _ProductDto {
-  const _$_ProductDto({required this.name});
+  const _$_ProductDto(
+      {required this.name,
+      @JsonKey(name: 'created_by') required this.createdBy});
 
   factory _$_ProductDto.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductDtoFromJson(json);
 
   @override
   final String name;
+  @override
+  @JsonKey(name: 'created_by')
+  final String createdBy;
 
   @override
   String toString() {
-    return 'ProductDto(name: $name)';
+    return 'ProductDto(name: $name, createdBy: $createdBy)';
   }
 
   @override
@@ -785,12 +901,17 @@ class _$_ProductDto implements _ProductDto {
     return identical(this, other) ||
         (other is _ProductDto &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.createdBy, createdBy) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdBy, createdBy)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(createdBy);
 
   @JsonKey(ignore: true)
   @override
@@ -804,13 +925,18 @@ class _$_ProductDto implements _ProductDto {
 }
 
 abstract class _ProductDto implements ProductDto {
-  const factory _ProductDto({required String name}) = _$_ProductDto;
+  const factory _ProductDto(
+      {required String name,
+      @JsonKey(name: 'created_by') required String createdBy}) = _$_ProductDto;
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
       _$_ProductDto.fromJson;
 
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'created_by')
+  String get createdBy => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$ProductDtoCopyWith<_ProductDto> get copyWith =>
