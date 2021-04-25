@@ -48,11 +48,13 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     ),
-                    trailing: IconButton(
-                      icon: Icon(Icons.delete_outline),
-                      onPressed: () {},
+                    // trailing: IconButton(
+                    //   icon: Icon(Icons.delete_outline),
+                    //   onPressed: () => viewModel.toGroceryDetailView(id: ''),
+                    // ),
+                    onTap: () => viewModel.toGroceryDetailView(
+                      id: index.toString(),
                     ),
-                    onTap: () {},
                   ),
                 );
               },

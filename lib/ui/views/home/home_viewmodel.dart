@@ -14,4 +14,11 @@ class HomeViewModel extends BaseViewModel {
   void toCreateGroceryView() {
     _navigationService.navigateTo(Routes.createGroceryView);
   }
+
+  void toGroceryDetailView({required String id}) {
+    _navigationService.navigateTo(
+      Routes.groceryDetailView,
+      arguments: GroceryDetailViewArguments(id: id),
+    );
+  }
 }
