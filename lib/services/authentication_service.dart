@@ -23,6 +23,11 @@ class AuthenticationService {
     }
 
     final response = await supabase.auth.api.getUser(accessToken);
+
+    if (response.error != null) {
+      return;
+    }
+
     final user = response.data!;
     _logger.i(user.toJson());
     await fetchUser(id: user.id);

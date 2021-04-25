@@ -4,6 +4,11 @@ class AppTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final FocusNode focusNode;
   final String labelText;
+  final String? hintText;
+  final String? helperText;
+  final String? errorText;
+  final String? prefixText;
+  final String? suffixText;
   final bool? obscureText;
   final TextInputType? keyboardType;
   final FormFieldValidator<String>? validator;
@@ -18,6 +23,11 @@ class AppTextFormField extends StatelessWidget {
     required this.controller,
     required this.focusNode,
     required this.labelText,
+    this.hintText,
+    this.helperText,
+    this.errorText,
+    this.prefixText,
+    this.suffixText,
     this.obscureText,
     this.keyboardType,
     this.validator,
@@ -43,6 +53,11 @@ class AppTextFormField extends StatelessWidget {
       validator: validator,
       decoration: InputDecoration(
         labelText: labelText,
+        hintText: hintText,
+        helperText: helperText,
+        errorText: errorText,
+        prefixText: prefixText,
+        suffixText: suffixText,
         border: OutlineInputBorder(),
       ),
     );
