@@ -11,6 +11,7 @@ import 'sign_up_viewmodel.dart';
 import 'sign_up_view.form.dart';
 
 @FormView(fields: [
+  FormTextField(name: 'name'),
   FormTextField(name: 'email'),
   FormTextField(name: 'password', isPassword: true),
 ])
@@ -50,6 +51,12 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
                   SupabaseLogo(),
                   SizedBox(height: 40),
                   AppTextFormField(
+                    labelText: 'Name',
+                    controller: nameController,
+                    focusNode: nameFocusNode,
+                  ),
+                  SizedBox(height: 10),
+                  AppTextFormField(
                     labelText: 'Email',
                     controller: emailController,
                     focusNode: emailFocusNode,
@@ -77,7 +84,7 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
                       Text("Already have an account?"),
                       SizedBox(width: 5),
                       AppTextButton(
-                        label: 'Sign Up',
+                        label: 'Sign In',
                         onTap: viewModel.toSignInView,
                       ),
                     ],

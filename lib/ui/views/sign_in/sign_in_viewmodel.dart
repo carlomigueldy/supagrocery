@@ -17,9 +17,9 @@ class SignInViewModel extends FormViewModel {
   }
 
   Future<void> signIn() async {
-    final user = await _authService.signIn(
+    final AppUser? user = await runBusyFuture(_authService.signIn(
       payload: AuthDto(email: emailValue!, password: passwordValue!),
-    );
+    ));
 
     if (user == null) {
       setValidationMessage('Incorrect email or password, please try again');

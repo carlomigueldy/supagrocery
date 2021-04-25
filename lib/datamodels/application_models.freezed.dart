@@ -792,10 +792,12 @@ AuthDto _$AuthDtoFromJson(Map<String, dynamic> json) {
 class _$AuthDtoTearOff {
   const _$AuthDtoTearOff();
 
-  _AuthDto call({required String email, required String password}) {
+  _AuthDto call(
+      {required String email, required String password, String? name}) {
     return _AuthDto(
       email: email,
       password: password,
+      name: name,
     );
   }
 
@@ -811,6 +813,7 @@ const $AuthDto = _$AuthDtoTearOff();
 mixin _$AuthDto {
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -821,7 +824,7 @@ mixin _$AuthDto {
 abstract class $AuthDtoCopyWith<$Res> {
   factory $AuthDtoCopyWith(AuthDto value, $Res Function(AuthDto) then) =
       _$AuthDtoCopyWithImpl<$Res>;
-  $Res call({String email, String password});
+  $Res call({String email, String password, String? name});
 }
 
 /// @nodoc
@@ -836,6 +839,7 @@ class _$AuthDtoCopyWithImpl<$Res> implements $AuthDtoCopyWith<$Res> {
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
+    Object? name = freezed,
   }) {
     return _then(_value.copyWith(
       email: email == freezed
@@ -846,6 +850,10 @@ class _$AuthDtoCopyWithImpl<$Res> implements $AuthDtoCopyWith<$Res> {
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -855,7 +863,7 @@ abstract class _$AuthDtoCopyWith<$Res> implements $AuthDtoCopyWith<$Res> {
   factory _$AuthDtoCopyWith(_AuthDto value, $Res Function(_AuthDto) then) =
       __$AuthDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String email, String password});
+  $Res call({String email, String password, String? name});
 }
 
 /// @nodoc
@@ -871,6 +879,7 @@ class __$AuthDtoCopyWithImpl<$Res> extends _$AuthDtoCopyWithImpl<$Res>
   $Res call({
     Object? email = freezed,
     Object? password = freezed,
+    Object? name = freezed,
   }) {
     return _then(_AuthDto(
       email: email == freezed
@@ -881,6 +890,10 @@ class __$AuthDtoCopyWithImpl<$Res> extends _$AuthDtoCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -889,7 +902,7 @@ class __$AuthDtoCopyWithImpl<$Res> extends _$AuthDtoCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_AuthDto implements _AuthDto {
-  const _$_AuthDto({required this.email, required this.password});
+  const _$_AuthDto({required this.email, required this.password, this.name});
 
   factory _$_AuthDto.fromJson(Map<String, dynamic> json) =>
       _$_$_AuthDtoFromJson(json);
@@ -898,10 +911,12 @@ class _$_AuthDto implements _AuthDto {
   final String email;
   @override
   final String password;
+  @override
+  final String? name;
 
   @override
   String toString() {
-    return 'AuthDto(email: $email, password: $password)';
+    return 'AuthDto(email: $email, password: $password, name: $name)';
   }
 
   @override
@@ -912,14 +927,17 @@ class _$_AuthDto implements _AuthDto {
                 const DeepCollectionEquality().equals(other.email, email)) &&
             (identical(other.password, password) ||
                 const DeepCollectionEquality()
-                    .equals(other.password, password)));
+                    .equals(other.password, password)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(email) ^
-      const DeepCollectionEquality().hash(password);
+      const DeepCollectionEquality().hash(password) ^
+      const DeepCollectionEquality().hash(name);
 
   @JsonKey(ignore: true)
   @override
@@ -933,8 +951,10 @@ class _$_AuthDto implements _AuthDto {
 }
 
 abstract class _AuthDto implements AuthDto {
-  const factory _AuthDto({required String email, required String password}) =
-      _$_AuthDto;
+  const factory _AuthDto(
+      {required String email,
+      required String password,
+      String? name}) = _$_AuthDto;
 
   factory _AuthDto.fromJson(Map<String, dynamic> json) = _$_AuthDto.fromJson;
 
@@ -942,6 +962,8 @@ abstract class _AuthDto implements AuthDto {
   String get email => throw _privateConstructorUsedError;
   @override
   String get password => throw _privateConstructorUsedError;
+  @override
+  String? get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AuthDtoCopyWith<_AuthDto> get copyWith =>

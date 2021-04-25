@@ -22,7 +22,11 @@ class SignUpViewModel extends FormViewModel {
     _logger.i(formValueMap);
 
     final user = await _authService.signUp(
-      payload: AuthDto(email: emailValue!, password: passwordValue!),
+      payload: AuthDto(
+        email: emailValue!,
+        password: passwordValue!,
+        name: nameValue!,
+      ),
     );
 
     if (user == null) {
