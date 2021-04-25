@@ -22,7 +22,7 @@ List<ThemeData> themes = [
         headline6: TextStyle(
           color: Colors.white,
           fontWeight: FontWeight.bold,
-          fontSize: 24,
+          fontSize: 18,
           fontFamily: _fontFamily,
         ),
       ),
