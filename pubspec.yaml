@@ -28,16 +28,17 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
-  stacked:
-  stacked_services:
-  stacked_hooks:
-  stacked_themes:
+  stacked: ^2.1.0
+  stacked_services: ^0.8.5
+  stacked_hooks: ^0.2.0
+  stacked_themes: ^0.3.2
+  logger:
 
   google_fonts: ^2.0.0
 
-  supabase:
+  supabase: ^0.0.1-dev.13
   freezed_annotation:
-  json_serializable: 
+  json_serializable:
 
 dev_dependencies:
   flutter_test:

@@ -7,6 +7,7 @@ import 'package:stacked_starter_template/ui/views/home/home_view.dart';
 import 'package:stacked_starter_template/ui/views/product_selection/product_selection_view.dart';
 
 @StackedApp(
+  logger: StackedLogger(),
   routes: [
     MaterialRoute(page: HomeView, initial: true),
     CupertinoRoute(page: CreateGroceryView),
