@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_starter_template/ui/views/startup/startup_viewmodel.dart';
+import 'package:supagrocery/ui/views/startup/startup_viewmodel.dart';
 
 class StartupView extends ViewModelBuilderWidget<StartupViewModel> {
   @override
-  void onViewModelReady(viewModel) {
-    viewModel.runStartupLogic();
+  Future<void> onViewModelReady(viewModel) async {
+    await viewModel.runStartupLogic();
   }
 
   @override

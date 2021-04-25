@@ -1,4 +1,4 @@
-package com.example.stacked_starter_template
+package com.carlomigueldy.supagrocery
 
 import io.flutter.embedding.android.FlutterActivity
 

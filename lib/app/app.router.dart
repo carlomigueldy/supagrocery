@@ -15,11 +15,15 @@ import '../ui/views/create_product/create_product_view.dart';
 import '../ui/views/grocery_detail/grocery_detail_view.dart';
 import '../ui/views/home/home_view.dart';
 import '../ui/views/product_selection/product_selection_view.dart';
+import '../ui/views/sign_in/sign_in_view.dart';
+import '../ui/views/sign_up/sign_up_view.dart';
 import '../ui/views/startup/startup_view.dart';
 
 class Routes {
   static const String startupView = '/';
   static const String homeView = '/home-view';
+  static const String signUpView = '/sign-up-view';
+  static const String signInView = '/sign-in-view';
   static const String createGroceryView = '/create-grocery-view';
   static const String createProductView = '/create-product-view';
   static const String groceryDetailView = '/grocery-detail-view';
@@ -27,6 +31,8 @@ class Routes {
   static const all = <String>{
     startupView,
     homeView,
+    signUpView,
+    signInView,
     createGroceryView,
     createProductView,
     groceryDetailView,
@@ -40,6 +46,8 @@ class StackedRouter extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.startupView, page: StartupView),
     RouteDef(Routes.homeView, page: HomeView),
+    RouteDef(Routes.signUpView, page: SignUpView),
+    RouteDef(Routes.signInView, page: SignInView),
     RouteDef(Routes.createGroceryView, page: CreateGroceryView),
     RouteDef(Routes.createProductView, page: CreateProductView),
     RouteDef(Routes.groceryDetailView, page: GroceryDetailView),
@@ -57,6 +65,18 @@ class StackedRouter extends RouterBase {
     HomeView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => HomeView(),
+        settings: data,
+      );
+    },
+    SignUpView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => SignUpView(),
+        settings: data,
+      );
+    },
+    SignInView: (data) {
+      return CupertinoPageRoute<dynamic>(
+        builder: (context) => SignInView(),
         settings: data,
       );
     },

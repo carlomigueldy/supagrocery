@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'application_models.freezed.dart';
+part 'application_models.g.dart';
 
 @freezed
 class AppUser with _$AppUser {

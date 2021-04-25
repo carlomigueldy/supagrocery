@@ -1,6 +1,6 @@
 {
-    "name": "stacked_starter_template",
-    "short_name": "stacked_starter_template",
+    "name": "supagrocery",
+    "short_name": "supagrocery",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

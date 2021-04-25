@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:stacked_starter_template/app/app.locator.dart';
-import 'package:stacked_starter_template/app/app.router.dart';
-import 'package:stacked_starter_template/styles/themes.dart';
+import 'package:supagrocery/app/app.locator.dart';
+import 'package:supagrocery/app/app.router.dart';
+import 'package:supagrocery/styles/themes.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
 Future<void> main() async {

@@ -1,5 +1,5 @@
-import 'package:stacked_starter_template/app/supabase_api.dart';
-import 'package:stacked_starter_template/datamodels/application_models.dart';
+import 'package:supagrocery/app/supabase_api.dart';
+import 'package:supagrocery/datamodels/application_models.dart';
 
 class AuthenticationService {
   AppUser? _user = null;

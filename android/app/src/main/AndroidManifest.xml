@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.stacked_starter_template">
+    package="com.carlomigueldy.supagrocery">
    <application
-        android:label="stacked_starter_template"
+        android:label="Supagrocery"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

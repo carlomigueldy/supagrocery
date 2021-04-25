@@ -1,5 +1,5 @@
-name: stacked_starter_template
-description: A stacked starter template.
+name: supagrocery
+description: A simple grocery app with Supabase backend.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -39,6 +39,7 @@ dependencies:
   supabase: ^0.0.1-dev.13
   freezed_annotation:
   json_serializable:
+  json_annotation:
 
 dev_dependencies:
   flutter_test:
