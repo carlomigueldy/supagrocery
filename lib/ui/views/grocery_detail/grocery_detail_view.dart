@@ -26,6 +26,10 @@ class GroceryDetailView extends ViewModelBuilderWidget<GroceryDetailViewModel> {
       appBar: AppBar(
         title: Text('Grocery List'),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: viewModel.toProductSelectionView,
+      ),
     );
   }
 
