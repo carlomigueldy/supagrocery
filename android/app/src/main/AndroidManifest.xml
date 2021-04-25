@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.carlomigueldy.supagrocery">
    <application
-        android:label="Supagrocery"
+        android:label="SupaGrocery"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
