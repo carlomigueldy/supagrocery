@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_starter_template/app/app.locator.dart';
 import 'package:stacked_starter_template/app/app.router.dart';
@@ -19,7 +18,7 @@ class App extends StatelessWidget {
     return ThemeBuilder(
       themes: themes,
       builder: (context, regularTheme, darkTheme, themeMode) => MaterialApp(
-        title: 'Stacked Starter Tempalte',
+        title: 'Supabase Grocery App',
         theme: regularTheme,
         darkTheme: darkTheme,
         themeMode: themeMode,

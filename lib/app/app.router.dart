@@ -10,24 +10,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
-import '../ui/views/about/about_view.dart';
-import '../ui/views/demo_grid/demo_grid_view.dart';
-import '../ui/views/demo_list/demo_list_view.dart';
+import '../ui/views/create_grocery/create_grocery_view.dart';
+import '../ui/views/create_product/create_product_view.dart';
+import '../ui/views/grocery_detail/grocery_detail_view.dart';
 import '../ui/views/home/home_view.dart';
-import '../ui/views/single_item/single_item_view.dart';
+import '../ui/views/product_selection/product_selection_view.dart';
 
 class Routes {
   static const String homeView = '/';
-  static const String aboutView = 'about';
-  static const String demoListView = 'demo-list-view';
-  static const String demoGridView = 'demo-grid-view';
-  static const String singleItemView = 'single-item-view';
+  static const String createGroceryView = '/create-grocery-view';
+  static const String createProductView = '/create-product-view';
+  static const String groceryDetailView = '/grocery-detail-view';
+  static const String productSelectionView = '/product-selection-view';
   static const all = <String>{
     homeView,
-    aboutView,
-    demoListView,
-    demoGridView,
-    singleItemView,
+    createGroceryView,
+    createProductView,
+    groceryDetailView,
+    productSelectionView,
   };
 }
 
@@ -36,10 +36,10 @@ class StackedRouter extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(Routes.homeView, page: HomeView),
-    RouteDef(Routes.aboutView, page: AboutView),
-    RouteDef(Routes.demoListView, page: DemoListView),
-    RouteDef(Routes.demoGridView, page: DemoGridView),
-    RouteDef(Routes.singleItemView, page: SingleItemView),
+    RouteDef(Routes.createGroceryView, page: CreateGroceryView),
+    RouteDef(Routes.createProductView, page: CreateProductView),
+    RouteDef(Routes.groceryDetailView, page: GroceryDetailView),
+    RouteDef(Routes.productSelectionView, page: ProductSelectionView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -50,27 +50,27 @@ class StackedRouter extends RouterBase {
         settings: data,
       );
     },
-    AboutView: (data) {
+    CreateGroceryView: (data) {
       return CupertinoPageRoute<dynamic>(
-        builder: (context) => AboutView(),
+        builder: (context) => CreateGroceryView(),
         settings: data,
       );
     },
-    DemoListView: (data) {
+    CreateProductView: (data) {
       return CupertinoPageRoute<dynamic>(
-        builder: (context) => DemoListView(),
+        builder: (context) => CreateProductView(),
         settings: data,
       );
     },
-    DemoGridView: (data) {
+    GroceryDetailView: (data) {
       return CupertinoPageRoute<dynamic>(
-        builder: (context) => DemoGridView(),
+        builder: (context) => GroceryDetailView(),
         settings: data,
       );
     },
-    SingleItemView: (data) {
+    ProductSelectionView: (data) {
       return CupertinoPageRoute<dynamic>(
-        builder: (context) => SingleItemView(),
+        builder: (context) => ProductSelectionView(),
         settings: data,
       );
     },
