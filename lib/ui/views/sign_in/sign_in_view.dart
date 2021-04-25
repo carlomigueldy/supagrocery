@@ -4,7 +4,9 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_button.dart';
 import 'package:supagrocery/ui/views/sign_in/sign_in_view.form.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/app_text_button.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_text_form_field.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/supabase_logo.dart';
 
 import 'sign_in_viewmodel.dart';
 
@@ -14,6 +16,13 @@ import 'sign_in_viewmodel.dart';
 ])
 class SignInView extends ViewModelBuilderWidget<SignInViewModel>
     with $SignInView {
+  @override
+  void onViewModelReady(SignInViewModel viewModel) {
+    super.onViewModelReady(viewModel);
+
+    listenToFormUpdated(viewModel);
+  }
+
   @override
   Widget builder(
     BuildContext context,
@@ -61,6 +70,18 @@ class SignInView extends ViewModelBuilderWidget<SignInViewModel>
                       viewModel.signIn();
                     },
                   ),
+                  SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Don't have an account yet?"),
+                      SizedBox(width: 5),
+                      AppTextButton(
+                        label: 'Sign Up',
+                        onTap: viewModel.toSignUpView,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -73,25 +94,5 @@ class SignInView extends ViewModelBuilderWidget<SignInViewModel>
   @override
   SignInViewModel viewModelBuilder(BuildContext context) {
     return SignInViewModel();
-  }
-}
-
-class SupabaseLogo extends StatelessWidget {
-  const SupabaseLogo({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 100,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        image: DecorationImage(
-          image: AssetImage('assets/logo.png'),
-        ),
-      ),
-    );
   }
 }

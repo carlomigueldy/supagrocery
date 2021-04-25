@@ -50,3 +50,14 @@ class GroceryProduct with _$GroceryProduct {
   factory GroceryProduct.fromJson(Map<String, dynamic> json) =>
       _$GroceryProductFromJson(json);
 }
+
+@freezed
+class AuthDto with _$AuthDto {
+  const factory AuthDto({
+    required String email,
+    required String password,
+  }) = _AuthDto;
+
+  factory AuthDto.fromJson(Map<String, dynamic> json) =>
+      _$AuthDtoFromJson(json);
+}

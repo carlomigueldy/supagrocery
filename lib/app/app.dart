@@ -15,8 +15,8 @@ import 'package:supagrocery/ui/views/startup/startup_view.dart';
   routes: [
     MaterialRoute(page: StartupView, initial: true),
     MaterialRoute(page: HomeView),
-    CupertinoRoute(page: SignUpView),
-    CupertinoRoute(page: SignInView),
+    MaterialRoute(page: SignUpView),
+    MaterialRoute(page: SignInView),
     CupertinoRoute(page: CreateGroceryView),
     CupertinoRoute(page: CreateProductView),
     CupertinoRoute(page: GroceryDetailView),

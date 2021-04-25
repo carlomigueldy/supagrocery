@@ -33,14 +33,13 @@ dependencies:
   stacked_hooks: ^0.2.0
   stacked_themes: ^0.3.2
   logger:
-
   google_fonts: ^2.0.0
-
   supabase: ^0.0.1-dev.13
   form_validator: ^0.1.7
   freezed_annotation:
   json_serializable:
   json_annotation:
+  url_launcher: ^6.0.3
 
 dev_dependencies:
   flutter_test:

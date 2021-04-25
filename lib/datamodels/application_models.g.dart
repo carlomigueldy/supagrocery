@@ -65,3 +65,16 @@ Map<String, dynamic> _$_$_GroceryProductToJson(_$_GroceryProduct instance) =>
       'quantity': instance.quantity,
       'unit': instance.unit,
     };
+
+_$_AuthDto _$_$_AuthDtoFromJson(Map<String, dynamic> json) {
+  return _$_AuthDto(
+    email: json['email'] as String,
+    password: json['password'] as String,
+  );
+}
+
+Map<String, dynamic> _$_$_AuthDtoToJson(_$_AuthDto instance) =>
+    <String, dynamic>{
+      'email': instance.email,
+      'password': instance.password,
+    };

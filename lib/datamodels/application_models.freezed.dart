@@ -783,3 +783,167 @@ abstract class _GroceryProduct implements GroceryProduct {
   _$GroceryProductCopyWith<_GroceryProduct> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+AuthDto _$AuthDtoFromJson(Map<String, dynamic> json) {
+  return _AuthDto.fromJson(json);
+}
+
+/// @nodoc
+class _$AuthDtoTearOff {
+  const _$AuthDtoTearOff();
+
+  _AuthDto call({required String email, required String password}) {
+    return _AuthDto(
+      email: email,
+      password: password,
+    );
+  }
+
+  AuthDto fromJson(Map<String, Object> json) {
+    return AuthDto.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $AuthDto = _$AuthDtoTearOff();
+
+/// @nodoc
+mixin _$AuthDto {
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $AuthDtoCopyWith<AuthDto> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AuthDtoCopyWith<$Res> {
+  factory $AuthDtoCopyWith(AuthDto value, $Res Function(AuthDto) then) =
+      _$AuthDtoCopyWithImpl<$Res>;
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class _$AuthDtoCopyWithImpl<$Res> implements $AuthDtoCopyWith<$Res> {
+  _$AuthDtoCopyWithImpl(this._value, this._then);
+
+  final AuthDto _value;
+  // ignore: unused_field
+  final $Res Function(AuthDto) _then;
+
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+  }) {
+    return _then(_value.copyWith(
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$AuthDtoCopyWith<$Res> implements $AuthDtoCopyWith<$Res> {
+  factory _$AuthDtoCopyWith(_AuthDto value, $Res Function(_AuthDto) then) =
+      __$AuthDtoCopyWithImpl<$Res>;
+  @override
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class __$AuthDtoCopyWithImpl<$Res> extends _$AuthDtoCopyWithImpl<$Res>
+    implements _$AuthDtoCopyWith<$Res> {
+  __$AuthDtoCopyWithImpl(_AuthDto _value, $Res Function(_AuthDto) _then)
+      : super(_value, (v) => _then(v as _AuthDto));
+
+  @override
+  _AuthDto get _value => super._value as _AuthDto;
+
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+  }) {
+    return _then(_AuthDto(
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_AuthDto implements _AuthDto {
+  const _$_AuthDto({required this.email, required this.password});
+
+  factory _$_AuthDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_AuthDtoFromJson(json);
+
+  @override
+  final String email;
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'AuthDto(email: $email, password: $password)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AuthDto &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(password);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AuthDtoCopyWith<_AuthDto> get copyWith =>
+      __$AuthDtoCopyWithImpl<_AuthDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_AuthDtoToJson(this);
+  }
+}
+
+abstract class _AuthDto implements AuthDto {
+  const factory _AuthDto({required String email, required String password}) =
+      _$_AuthDto;
+
+  factory _AuthDto.fromJson(Map<String, dynamic> json) = _$_AuthDto.fromJson;
+
+  @override
+  String get email => throw _privateConstructorUsedError;
+  @override
+  String get password => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$AuthDtoCopyWith<_AuthDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}

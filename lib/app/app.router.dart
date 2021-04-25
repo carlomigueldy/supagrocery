@@ -69,13 +69,13 @@ class StackedRouter extends RouterBase {
       );
     },
     SignUpView: (data) {
-      return CupertinoPageRoute<dynamic>(
+      return MaterialPageRoute<dynamic>(
         builder: (context) => SignUpView(),
         settings: data,
       );
     },
     SignInView: (data) {
-      return CupertinoPageRoute<dynamic>(
+      return MaterialPageRoute<dynamic>(
         builder: (context) => SignInView(),
         settings: data,
       );

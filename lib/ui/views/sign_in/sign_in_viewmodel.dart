@@ -2,6 +2,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:supagrocery/app/app.router.dart';
 import 'package:supagrocery/app/app.locator.dart';
+import 'package:supagrocery/datamodels/application_models.dart';
 import 'package:supagrocery/services/authentication_service.dart';
 
 import 'sign_in_view.form.dart';
@@ -16,8 +17,9 @@ class SignInViewModel extends FormViewModel {
   }
 
   Future<void> signIn() async {
-    final user =
-        await _authService.signIn(email: emailValue!, password: passwordValue!);
+    final user = await _authService.signIn(
+      payload: AuthDto(email: emailValue!, password: passwordValue!),
+    );
 
     if (user == null) {
       setValidationMessage('Incorrect email or password, please try again');
@@ -27,5 +29,9 @@ class SignInViewModel extends FormViewModel {
     }
 
     await _navigationService.replaceWith(Routes.homeView);
+  }
+
+  void toSignUpView() {
+    _navigationService.replaceWith(Routes.signUpView);
   }
 }
