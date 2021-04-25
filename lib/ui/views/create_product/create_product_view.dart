@@ -11,7 +11,11 @@ class CreateProductView extends ViewModelBuilderWidget<CreateProductViewModel> {
     CreateProductViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Create Product'),
+      ),
+    );
   }
 
   @override

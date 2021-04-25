@@ -11,7 +11,11 @@ class GroceryDetailView extends ViewModelBuilderWidget<GroceryDetailViewModel> {
     GroceryDetailViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Grocery List'),
+      ),
+    );
   }
 
   @override

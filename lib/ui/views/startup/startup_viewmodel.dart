@@ -4,6 +4,8 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:supagrocery/app/app.locator.dart';
 import 'package:supagrocery/app/app.router.dart';
 import 'package:supagrocery/services/authentication_service.dart';
+import 'package:supagrocery/ui/views/home/home_view.dart';
+import 'package:supagrocery/ui/views/sign_in/sign_in_view.dart';
 
 class StartupViewModel extends BaseViewModel {
   final _authService = locator<AuthenticationService>();
@@ -15,9 +17,15 @@ class StartupViewModel extends BaseViewModel {
     await _authService.initialize();
 
     if (_authService.hasUser) {
-      return _navigationService.replaceWith(Routes.homeView);
+      return await _navigationService.replaceWithTransition(
+        HomeView(),
+        transition: 'upToDown',
+      );
     }
 
-    return _navigationService.replaceWith(Routes.signInView);
+    return await _navigationService.replaceWithTransition(
+      SignInView(),
+      transition: 'upToDown',
+    );
   }
 }

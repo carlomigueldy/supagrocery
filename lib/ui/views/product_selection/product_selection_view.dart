@@ -12,7 +12,11 @@ class ProductSelectionView
     ProductSelectionViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Select Product(s)'),
+      ),
+    );
   }
 
   @override

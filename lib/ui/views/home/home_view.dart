@@ -35,14 +35,29 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
               ),
             ),
             SizedBox(height: 30),
-            ListView.builder(
+            ListView.separated(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              itemCount: 25,
+              itemCount: 5,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(index.toString()),
+                return AppHPadding(
+                  child: ListTile(
+                    title: Text('Title'),
+                    subtitle: Text('24 items, 3 marked check'),
+                    isThreeLine: true,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete_outline),
+                      onPressed: () {},
+                    ),
+                    onTap: () {},
+                  ),
                 );
+              },
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(height: 15);
               },
             )
           ],
