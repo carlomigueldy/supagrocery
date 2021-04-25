@@ -26,6 +26,7 @@ _$_Grocery _$_$_GroceryFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     name: json['name'] as String,
     createdBy: json['created_by'] as String,
+    products: Grocery._productsFromJson(json['products'] as List?),
   );
 }
 
@@ -34,6 +35,7 @@ Map<String, dynamic> _$_$_GroceryToJson(_$_Grocery instance) =>
       'id': instance.id,
       'name': instance.name,
       'created_by': instance.createdBy,
+      'products': Grocery._productsToJson(instance.products),
     };
 
 _$_GroceryDto _$_$_GroceryDtoFromJson(Map<String, dynamic> json) {

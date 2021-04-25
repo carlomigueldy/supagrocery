@@ -96,7 +96,7 @@ class _Body extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
             ),
             onTap: () => viewModel.toGroceryDetailView(
-              id: index.toString(),
+              id: item.id,
             ),
           ),
         );

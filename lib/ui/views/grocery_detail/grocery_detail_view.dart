@@ -24,17 +24,46 @@ class GroceryDetailView extends ViewModelBuilderWidget<GroceryDetailViewModel> {
   ) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Grocery List'),
+        title: viewModel.isBusy ? Text('Loading...') : _title(viewModel),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: viewModel.toProductSelectionView,
       ),
+      body: _Body(viewModel: viewModel),
     );
   }
+
+  Text _title(GroceryDetailViewModel viewModel) => Text(viewModel.data!.name);
 
   @override
   GroceryDetailViewModel viewModelBuilder(BuildContext context) {
     return GroceryDetailViewModel(id: id);
+  }
+}
+
+class _Body extends StatelessWidget {
+  final GroceryDetailViewModel viewModel;
+
+  const _Body({
+    Key? key,
+    required this.viewModel,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    if (viewModel.isBusy) {
+      return Center(child: CircularProgressIndicator());
+    }
+
+    return ListView.separated(
+      itemCount: 5,
+      itemBuilder: (context, index) {
+        return Container();
+      },
+      separatorBuilder: (context, index) {
+        return Container();
+      },
+    );
   }
 }

@@ -21,10 +21,28 @@ class Grocery with _$Grocery {
     required String id,
     required String name,
     @JsonKey(name: 'created_by') required String createdBy,
+    @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
+        List<Product>? products,
   }) = _Grocery;
 
   factory Grocery.fromJson(Map<String, dynamic> json) =>
       _$GroceryFromJson(json);
+
+  static List<Product>? _productsFromJson(List<dynamic>? list) {
+    if (list == null) {
+      return [];
+    }
+
+    return list.map((e) => Product.fromJson(e)).toList();
+  }
+
+  static List<Map<String, dynamic>>? _productsToJson(List<Product>? list) {
+    if (list == null) {
+      return [];
+    }
+
+    return list.map((e) => e.toJson()).toList();
+  }
 }
 
 @freezed

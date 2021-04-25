@@ -34,7 +34,8 @@ class CreateGroceryViewModel extends FormViewModel {
     }
 
     final data = Grocery.fromJson(response.data[0]);
-    await _navigationService.navigateTo(
+
+    await _navigationService.replaceWith(
       Routes.groceryDetailView,
       arguments: GroceryDetailViewArguments(id: data.id),
     );
