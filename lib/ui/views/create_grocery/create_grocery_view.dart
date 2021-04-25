@@ -15,6 +15,13 @@ import 'create_grocery_viewmodel.dart';
 class CreateGroceryView extends ViewModelBuilderWidget<CreateGroceryViewModel>
     with $CreateGroceryView {
   @override
+  void onViewModelReady(CreateGroceryViewModel viewModel) {
+    super.onViewModelReady(viewModel);
+
+    listenToFormUpdated(viewModel);
+  }
+
+  @override
   Widget builder(
     BuildContext context,
     CreateGroceryViewModel viewModel,

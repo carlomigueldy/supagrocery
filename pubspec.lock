@@ -458,7 +458,7 @@ packages:
     source: hosted
     version: "1.5.0"
   postgrest:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: postgrest
       url: "https://pub.dartlang.org"

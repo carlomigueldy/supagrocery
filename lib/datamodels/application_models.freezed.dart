@@ -360,6 +360,153 @@ abstract class _Grocery implements Grocery {
       throw _privateConstructorUsedError;
 }
 
+GroceryDto _$GroceryDtoFromJson(Map<String, dynamic> json) {
+  return _GroceryDto.fromJson(json);
+}
+
+/// @nodoc
+class _$GroceryDtoTearOff {
+  const _$GroceryDtoTearOff();
+
+  _GroceryDto call({required String name}) {
+    return _GroceryDto(
+      name: name,
+    );
+  }
+
+  GroceryDto fromJson(Map<String, Object> json) {
+    return GroceryDto.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $GroceryDto = _$GroceryDtoTearOff();
+
+/// @nodoc
+mixin _$GroceryDto {
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GroceryDtoCopyWith<GroceryDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GroceryDtoCopyWith<$Res> {
+  factory $GroceryDtoCopyWith(
+          GroceryDto value, $Res Function(GroceryDto) then) =
+      _$GroceryDtoCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class _$GroceryDtoCopyWithImpl<$Res> implements $GroceryDtoCopyWith<$Res> {
+  _$GroceryDtoCopyWithImpl(this._value, this._then);
+
+  final GroceryDto _value;
+  // ignore: unused_field
+  final $Res Function(GroceryDto) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$GroceryDtoCopyWith<$Res> implements $GroceryDtoCopyWith<$Res> {
+  factory _$GroceryDtoCopyWith(
+          _GroceryDto value, $Res Function(_GroceryDto) then) =
+      __$GroceryDtoCopyWithImpl<$Res>;
+  @override
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$GroceryDtoCopyWithImpl<$Res> extends _$GroceryDtoCopyWithImpl<$Res>
+    implements _$GroceryDtoCopyWith<$Res> {
+  __$GroceryDtoCopyWithImpl(
+      _GroceryDto _value, $Res Function(_GroceryDto) _then)
+      : super(_value, (v) => _then(v as _GroceryDto));
+
+  @override
+  _GroceryDto get _value => super._value as _GroceryDto;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_GroceryDto(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_GroceryDto implements _GroceryDto {
+  const _$_GroceryDto({required this.name});
+
+  factory _$_GroceryDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_GroceryDtoFromJson(json);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'GroceryDto(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GroceryDto &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+
+  @JsonKey(ignore: true)
+  @override
+  _$GroceryDtoCopyWith<_GroceryDto> get copyWith =>
+      __$GroceryDtoCopyWithImpl<_GroceryDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_GroceryDtoToJson(this);
+  }
+}
+
+abstract class _GroceryDto implements GroceryDto {
+  const factory _GroceryDto({required String name}) = _$_GroceryDto;
+
+  factory _GroceryDto.fromJson(Map<String, dynamic> json) =
+      _$_GroceryDto.fromJson;
+
+  @override
+  String get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$GroceryDtoCopyWith<_GroceryDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return _Product.fromJson(json);
 }
@@ -520,6 +667,153 @@ abstract class _Product implements Product {
   @override
   @JsonKey(ignore: true)
   _$ProductCopyWith<_Product> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+ProductDto _$ProductDtoFromJson(Map<String, dynamic> json) {
+  return _ProductDto.fromJson(json);
+}
+
+/// @nodoc
+class _$ProductDtoTearOff {
+  const _$ProductDtoTearOff();
+
+  _ProductDto call({required String name}) {
+    return _ProductDto(
+      name: name,
+    );
+  }
+
+  ProductDto fromJson(Map<String, Object> json) {
+    return ProductDto.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $ProductDto = _$ProductDtoTearOff();
+
+/// @nodoc
+mixin _$ProductDto {
+  String get name => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $ProductDtoCopyWith<ProductDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ProductDtoCopyWith<$Res> {
+  factory $ProductDtoCopyWith(
+          ProductDto value, $Res Function(ProductDto) then) =
+      _$ProductDtoCopyWithImpl<$Res>;
+  $Res call({String name});
+}
+
+/// @nodoc
+class _$ProductDtoCopyWithImpl<$Res> implements $ProductDtoCopyWith<$Res> {
+  _$ProductDtoCopyWithImpl(this._value, this._then);
+
+  final ProductDto _value;
+  // ignore: unused_field
+  final $Res Function(ProductDto) _then;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_value.copyWith(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$ProductDtoCopyWith<$Res> implements $ProductDtoCopyWith<$Res> {
+  factory _$ProductDtoCopyWith(
+          _ProductDto value, $Res Function(_ProductDto) then) =
+      __$ProductDtoCopyWithImpl<$Res>;
+  @override
+  $Res call({String name});
+}
+
+/// @nodoc
+class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
+    implements _$ProductDtoCopyWith<$Res> {
+  __$ProductDtoCopyWithImpl(
+      _ProductDto _value, $Res Function(_ProductDto) _then)
+      : super(_value, (v) => _then(v as _ProductDto));
+
+  @override
+  _ProductDto get _value => super._value as _ProductDto;
+
+  @override
+  $Res call({
+    Object? name = freezed,
+  }) {
+    return _then(_ProductDto(
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_ProductDto implements _ProductDto {
+  const _$_ProductDto({required this.name});
+
+  factory _$_ProductDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_ProductDtoFromJson(json);
+
+  @override
+  final String name;
+
+  @override
+  String toString() {
+    return 'ProductDto(name: $name)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ProductDto &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ProductDtoCopyWith<_ProductDto> get copyWith =>
+      __$ProductDtoCopyWithImpl<_ProductDto>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_ProductDtoToJson(this);
+  }
+}
+
+abstract class _ProductDto implements ProductDto {
+  const factory _ProductDto({required String name}) = _$_ProductDto;
+
+  factory _ProductDto.fromJson(Map<String, dynamic> json) =
+      _$_ProductDto.fromJson;
+
+  @override
+  String get name => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$ProductDtoCopyWith<_ProductDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

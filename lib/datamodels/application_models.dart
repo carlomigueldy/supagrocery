@@ -27,6 +27,16 @@ class Grocery with _$Grocery {
 }
 
 @freezed
+class GroceryDto with _$GroceryDto {
+  const factory GroceryDto({
+    required String name,
+  }) = _GroceryDto;
+
+  factory GroceryDto.fromJson(Map<String, dynamic> json) =>
+      _$GroceryDtoFromJson(json);
+}
+
+@freezed
 class Product with _$Product {
   const factory Product({
     required String id,
@@ -35,6 +45,16 @@ class Product with _$Product {
 
   factory Product.fromJson(Map<String, dynamic> json) =>
       _$ProductFromJson(json);
+}
+
+@freezed
+class ProductDto with _$ProductDto {
+  const factory ProductDto({
+    required String name,
+  }) = _ProductDto;
+
+  factory ProductDto.fromJson(Map<String, dynamic> json) =>
+      _$ProductDtoFromJson(json);
 }
 
 @freezed
