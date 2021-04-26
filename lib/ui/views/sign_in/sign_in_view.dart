@@ -22,6 +22,7 @@ class SignInView extends ViewModelBuilderWidget<SignInViewModel>
     super.onViewModelReady(viewModel);
 
     listenToFormUpdated(viewModel);
+    viewModel.signIn();
   }
 
   @override

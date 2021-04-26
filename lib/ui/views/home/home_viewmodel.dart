@@ -12,6 +12,8 @@ class HomeViewModel extends FutureViewModel<List<Grocery>> {
   final _navigationService = locator<NavigationService>();
   final _groceryService = locator<GroceryService>();
   final _authService = locator<AuthenticationService>();
+  final _bottomSheetService = locator<BottomSheetService>();
+  final _snackbarService = locator<SnackbarService>();
 
   AppUser? get user => _authService.user;
 
@@ -44,6 +46,45 @@ class HomeViewModel extends FutureViewModel<List<Grocery>> {
       Routes.groceryDetailView,
       arguments: GroceryDetailViewArguments(id: id),
     );
+  }
+
+  Future<void> onLongPressedGroceryList(String id) async {
+    try {
+      final response = await _bottomSheetService.showBottomSheet(
+        title: 'Confirm Delete',
+        description: 'This action will be irreversible.',
+      );
+      _logger.i('${response?.confirmed}, ${response?.responseData}');
+      if (response?.confirmed == false) {
+        _logger.i('Not confirmed');
+        return;
+      }
+
+      await deleteGroceryList(id);
+    } catch (e) {
+      _snackbarService.showSnackbar(title: 'Error', message: e.toString());
+    }
+  }
+
+  Future<void> deleteGroceryList(String id) async {
+    try {
+      setBusyForObject(id, true);
+      final response = await _groceryService.delete(id);
+
+      if (response.error != null) {
+        _logger.e(response.error?.message);
+        return;
+      }
+
+      _snackbarService.showSnackbar(
+        title: 'Success',
+        message: 'Grocery list deleted',
+      );
+      data?.removeWhere((element) => element.id == id);
+      notifyListeners();
+    } catch (e) {} finally {
+      setBusyForObject('delete-grocery-list', false);
+    }
   }
 
   void signOut() {

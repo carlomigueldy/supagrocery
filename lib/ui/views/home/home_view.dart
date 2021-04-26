@@ -101,14 +101,18 @@ class _Body extends StatelessWidget {
         return AppHPadding(
           child: ListTile(
             title: Text(item.name),
-            subtitle: Text('24 items, 3 marked check'),
+            subtitle: Text('Grocery List'),
             isThreeLine: true,
+            trailing: viewModel.busy(item.id)
+                ? CircularProgressIndicator()
+                : SizedBox.shrink(),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5),
             ),
             onTap: () => viewModel.toGroceryDetailView(
               id: item.id,
             ),
+            onLongPress: () => viewModel.onLongPressedGroceryList(item.id),
           ),
         );
       },

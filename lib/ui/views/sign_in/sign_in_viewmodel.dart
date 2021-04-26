@@ -23,9 +23,12 @@ class SignInViewModel extends FormViewModel {
     try {
       setBusy(true);
       _logger.i(formValueMap);
+      final payload = AuthDto(
+        email: emailValue ?? 'john.doe@gmail.com',
+        password: passwordValue ?? 'password',
+      );
       final user = await _authService.signIn(
-        payload:
-            AuthDto(email: emailValue ?? '', password: passwordValue ?? ''),
+        payload: payload,
       );
 
       if (user == null) {
