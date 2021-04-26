@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:stacked/stacked.dart';
+import 'package:supagrocery/datamodels/application_models.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/app_button.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/app_padding.dart';
 
 import 'grocery_detail_viewmodel.dart';
 
@@ -56,10 +59,36 @@ class _Body extends StatelessWidget {
       return Center(child: CircularProgressIndicator());
     }
 
+    if (!viewModel.hasProducts) {
+      return AppHPadding(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [Text('No items in this list yet')],
+            ),
+            SizedBox(height: 15),
+            AppButton(
+              label: 'Select',
+              onPressed: viewModel.toProductSelectionView,
+              fullWidth: false,
+            ),
+          ],
+        ),
+      );
+    }
+
     return ListView.separated(
-      itemCount: 5,
+      itemCount: viewModel.products.length,
       itemBuilder: (context, index) {
-        return Container();
+        Product item = viewModel.products[index];
+
+        return ListTile(
+          title: Text(item.name),
+          subtitle: Text('Created by ' + item.createdBy),
+        );
       },
       separatorBuilder: (context, index) {
         return Container();

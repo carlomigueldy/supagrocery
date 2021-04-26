@@ -5,6 +5,7 @@ import 'package:supagrocery/app/app.locator.dart';
 import 'package:supagrocery/app/app.router.dart';
 import 'package:supagrocery/datamodels/application_models.dart';
 import 'package:supagrocery/services/grocery_service.dart';
+import 'package:supagrocery/ui/views/product_selection/product_selection_view.dart';
 
 class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
   final _logger = Logger();
@@ -14,6 +15,10 @@ class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
   final String id;
 
   GroceryDetailViewModel({required this.id});
+
+  bool get hasProducts => data!.products!.length > 0;
+
+  List<Product> get products => data!.products ?? [];
 
   @override
   Future<Grocery?> futureToRun() async {
@@ -25,7 +30,7 @@ class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
   }
 
   Future<Grocery?> _fetchGrocery() async {
-    final response = await _groceryService.find(id);
+    final response = await _groceryService.fetchGroceryList(id: id);
     _logger.i(response.toJson());
 
     if (response.error != null) {
@@ -37,6 +42,9 @@ class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
   }
 
   void toProductSelectionView() {
-    _navigationService.navigateTo(Routes.productSelectionView);
+    _navigationService.navigateWithTransition(
+      ProductSelectionView(),
+      transition: 'downToUp',
+    );
   }
 }
