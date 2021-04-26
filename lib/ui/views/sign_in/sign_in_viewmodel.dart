@@ -20,23 +20,35 @@ class SignInViewModel extends FormViewModel {
   }
 
   Future<void> signIn() async {
-    setBusy(true);
-    _logger.i(formValueMap);
-    final user = await _authService.signIn(
-      payload: AuthDto(email: emailValue!, password: passwordValue!),
-    );
-    setBusy(false);
-
-    if (user == null) {
-      _snackbarService.showSnackbar(
-        message: 'Incorrect email or password, please try again',
+    try {
+      setBusy(true);
+      _logger.i(formValueMap);
+      final user = await _authService.signIn(
+        payload:
+            AuthDto(email: emailValue ?? '', password: passwordValue ?? ''),
       );
 
-      return;
-    }
+      if (user == null) {
+        setError('Incorrect email or password, please try again');
+        _snackbarService.showSnackbar(
+          title: 'Error',
+          message: modelError,
+        );
 
-    await _navigationService.replaceWith(Routes.homeView);
-    _snackbarService.showSnackbar(message: 'You have signed in successfully');
+        return;
+      }
+
+      _snackbarService.showSnackbar(
+        title: 'Info',
+        message: 'You have signed in successfully',
+      );
+      await _navigationService.replaceWith(Routes.homeView);
+    } catch (e) {
+      _logger.e(e);
+      _snackbarService.showSnackbar(title: 'Error', message: e.toString());
+    } finally {
+      setBusy(false);
+    }
   }
 
   void toSignUpView() {

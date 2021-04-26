@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_button.dart';
 import 'package:supagrocery/ui/views/sign_in/sign_in_view.form.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/app_error_text.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_text_button.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_text_form_field.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/supabase_logo.dart';
@@ -69,6 +70,8 @@ class SignInView extends ViewModelBuilderWidget<SignInViewModel>
                       viewModel.signIn();
                     },
                   ),
+                  SizedBox(height: 5),
+                  AppErrorText(text: viewModel.modelError),
                   SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

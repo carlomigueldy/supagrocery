@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_button.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/app_error_text.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_text_button.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_text_form_field.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/supabase_logo.dart';
@@ -52,6 +53,7 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
                     labelText: 'Name',
                     controller: nameController,
                     focusNode: nameFocusNode,
+                    helperText: 'Required',
                   ),
                   SizedBox(height: 10),
                   AppTextFormField(
@@ -59,6 +61,7 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
                     controller: emailController,
                     focusNode: emailFocusNode,
                     keyboardType: TextInputType.emailAddress,
+                    helperText: 'Required',
                   ),
                   SizedBox(height: 10),
                   AppTextFormField(
@@ -67,6 +70,7 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
                     focusNode: passwordFocusNode,
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
+                    helperText: 'Required',
                   ),
                   SizedBox(height: 30),
                   AppButton(
@@ -76,6 +80,8 @@ class SignUpView extends ViewModelBuilderWidget<SignUpViewModel>
                       viewModel.signUp();
                     },
                   ),
+                  SizedBox(height: 5),
+                  AppErrorText(text: viewModel.modelError),
                   SizedBox(height: 15),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
