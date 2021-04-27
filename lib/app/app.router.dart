@@ -104,8 +104,12 @@ class StackedRouter extends RouterBase {
       );
     },
     ProductSelectionView: (data) {
+      var args = data.getArgs<ProductSelectionViewArguments>(nullOk: false);
       return CupertinoPageRoute<dynamic>(
-        builder: (context) => ProductSelectionView(),
+        builder: (context) => ProductSelectionView(
+          key: args.key,
+          groceryId: args.groceryId,
+        ),
         settings: data,
       );
     },
@@ -121,4 +125,11 @@ class GroceryDetailViewArguments {
   final Key? key;
   final String id;
   GroceryDetailViewArguments({this.key, required this.id});
+}
+
+/// ProductSelectionView arguments holder class
+class ProductSelectionViewArguments {
+  final Key? key;
+  final String groceryId;
+  ProductSelectionViewArguments({this.key, required this.groceryId});
 }

@@ -210,13 +210,13 @@ class _$GroceryTearOff {
       required String name,
       @JsonKey(name: 'created_by')
           required String createdBy,
-      @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-          List<Product>? products}) {
+      @JsonKey(name: 'grocery_products', fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
+          List<GroceryProduct>? groceryProducts = const []}) {
     return _Grocery(
       id: id,
       name: name,
       createdBy: createdBy,
-      products: products,
+      groceryProducts: groceryProducts,
     );
   }
 
@@ -234,8 +234,12 @@ mixin _$Grocery {
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_by')
   String get createdBy => throw _privateConstructorUsedError;
-  @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-  List<Product>? get products => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'grocery_products',
+      fromJson: Grocery._productsFromJson,
+      toJson: Grocery._productsToJson)
+  List<GroceryProduct>? get groceryProducts =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -251,8 +255,8 @@ abstract class $GroceryCopyWith<$Res> {
       String name,
       @JsonKey(name: 'created_by')
           String createdBy,
-      @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-          List<Product>? products});
+      @JsonKey(name: 'grocery_products', fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
+          List<GroceryProduct>? groceryProducts});
 }
 
 /// @nodoc
@@ -268,7 +272,7 @@ class _$GroceryCopyWithImpl<$Res> implements $GroceryCopyWith<$Res> {
     Object? id = freezed,
     Object? name = freezed,
     Object? createdBy = freezed,
-    Object? products = freezed,
+    Object? groceryProducts = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -283,10 +287,10 @@ class _$GroceryCopyWithImpl<$Res> implements $GroceryCopyWith<$Res> {
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
+      groceryProducts: groceryProducts == freezed
+          ? _value.groceryProducts
+          : groceryProducts // ignore: cast_nullable_to_non_nullable
+              as List<GroceryProduct>?,
     ));
   }
 }
@@ -301,8 +305,8 @@ abstract class _$GroceryCopyWith<$Res> implements $GroceryCopyWith<$Res> {
       String name,
       @JsonKey(name: 'created_by')
           String createdBy,
-      @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-          List<Product>? products});
+      @JsonKey(name: 'grocery_products', fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
+          List<GroceryProduct>? groceryProducts});
 }
 
 /// @nodoc
@@ -319,7 +323,7 @@ class __$GroceryCopyWithImpl<$Res> extends _$GroceryCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? createdBy = freezed,
-    Object? products = freezed,
+    Object? groceryProducts = freezed,
   }) {
     return _then(_Grocery(
       id: id == freezed
@@ -334,10 +338,10 @@ class __$GroceryCopyWithImpl<$Res> extends _$GroceryCopyWithImpl<$Res>
           ? _value.createdBy
           : createdBy // ignore: cast_nullable_to_non_nullable
               as String,
-      products: products == freezed
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>?,
+      groceryProducts: groceryProducts == freezed
+          ? _value.groceryProducts
+          : groceryProducts // ignore: cast_nullable_to_non_nullable
+              as List<GroceryProduct>?,
     ));
   }
 }
@@ -345,14 +349,15 @@ class __$GroceryCopyWithImpl<$Res> extends _$GroceryCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_Grocery implements _Grocery {
+class _$_Grocery extends _Grocery {
   const _$_Grocery(
       {required this.id,
       required this.name,
       @JsonKey(name: 'created_by')
           required this.createdBy,
-      @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-          this.products});
+      @JsonKey(name: 'grocery_products', fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
+          this.groceryProducts = const []})
+      : super._();
 
   factory _$_Grocery.fromJson(Map<String, dynamic> json) =>
       _$_$_GroceryFromJson(json);
@@ -365,12 +370,15 @@ class _$_Grocery implements _Grocery {
   @JsonKey(name: 'created_by')
   final String createdBy;
   @override
-  @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-  final List<Product>? products;
+  @JsonKey(
+      name: 'grocery_products',
+      fromJson: Grocery._productsFromJson,
+      toJson: Grocery._productsToJson)
+  final List<GroceryProduct>? groceryProducts;
 
   @override
   String toString() {
-    return 'Grocery(id: $id, name: $name, createdBy: $createdBy, products: $products)';
+    return 'Grocery(id: $id, name: $name, createdBy: $createdBy, groceryProducts: $groceryProducts)';
   }
 
   @override
@@ -384,9 +392,9 @@ class _$_Grocery implements _Grocery {
             (identical(other.createdBy, createdBy) ||
                 const DeepCollectionEquality()
                     .equals(other.createdBy, createdBy)) &&
-            (identical(other.products, products) ||
+            (identical(other.groceryProducts, groceryProducts) ||
                 const DeepCollectionEquality()
-                    .equals(other.products, products)));
+                    .equals(other.groceryProducts, groceryProducts)));
   }
 
   @override
@@ -395,7 +403,7 @@ class _$_Grocery implements _Grocery {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(createdBy) ^
-      const DeepCollectionEquality().hash(products);
+      const DeepCollectionEquality().hash(groceryProducts);
 
   @JsonKey(ignore: true)
   @override
@@ -408,14 +416,15 @@ class _$_Grocery implements _Grocery {
   }
 }
 
-abstract class _Grocery implements Grocery {
+abstract class _Grocery extends Grocery {
   const factory _Grocery(
       {required String id,
       required String name,
       @JsonKey(name: 'created_by')
           required String createdBy,
-      @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-          List<Product>? products}) = _$_Grocery;
+      @JsonKey(name: 'grocery_products', fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
+          List<GroceryProduct>? groceryProducts}) = _$_Grocery;
+  const _Grocery._() : super._();
 
   factory _Grocery.fromJson(Map<String, dynamic> json) = _$_Grocery.fromJson;
 
@@ -427,8 +436,12 @@ abstract class _Grocery implements Grocery {
   @JsonKey(name: 'created_by')
   String get createdBy => throw _privateConstructorUsedError;
   @override
-  @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-  List<Product>? get products => throw _privateConstructorUsedError;
+  @JsonKey(
+      name: 'grocery_products',
+      fromJson: Grocery._productsFromJson,
+      toJson: Grocery._productsToJson)
+  List<GroceryProduct>? get groceryProducts =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$GroceryCopyWith<_Grocery> get copyWith =>
@@ -998,12 +1011,14 @@ class _$GroceryProductTearOff {
       @JsonKey(name: 'grocery_id') required String groceryId,
       @JsonKey(name: 'product_id') required String productId,
       required int quantity,
-      String? unit}) {
+      @JsonKey(name: 'products') Product? product,
+      String? unit = ''}) {
     return _GroceryProduct(
       id: id,
       groceryId: groceryId,
       productId: productId,
       quantity: quantity,
+      product: product,
       unit: unit,
     );
   }
@@ -1024,6 +1039,8 @@ mixin _$GroceryProduct {
   @JsonKey(name: 'product_id')
   String get productId => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'products')
+  Product? get product => throw _privateConstructorUsedError;
   String? get unit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1042,7 +1059,10 @@ abstract class $GroceryProductCopyWith<$Res> {
       @JsonKey(name: 'grocery_id') String groceryId,
       @JsonKey(name: 'product_id') String productId,
       int quantity,
+      @JsonKey(name: 'products') Product? product,
       String? unit});
+
+  $ProductCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -1060,6 +1080,7 @@ class _$GroceryProductCopyWithImpl<$Res>
     Object? groceryId = freezed,
     Object? productId = freezed,
     Object? quantity = freezed,
+    Object? product = freezed,
     Object? unit = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1067,6 +1088,295 @@ class _$GroceryProductCopyWithImpl<$Res>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
+      groceryId: groceryId == freezed
+          ? _value.groceryId
+          : groceryId // ignore: cast_nullable_to_non_nullable
+              as String,
+      productId: productId == freezed
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      product: product == freezed
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product?,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+
+  @override
+  $ProductCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $ProductCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$GroceryProductCopyWith<$Res>
+    implements $GroceryProductCopyWith<$Res> {
+  factory _$GroceryProductCopyWith(
+          _GroceryProduct value, $Res Function(_GroceryProduct) then) =
+      __$GroceryProductCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {String id,
+      @JsonKey(name: 'grocery_id') String groceryId,
+      @JsonKey(name: 'product_id') String productId,
+      int quantity,
+      @JsonKey(name: 'products') Product? product,
+      String? unit});
+
+  @override
+  $ProductCopyWith<$Res>? get product;
+}
+
+/// @nodoc
+class __$GroceryProductCopyWithImpl<$Res>
+    extends _$GroceryProductCopyWithImpl<$Res>
+    implements _$GroceryProductCopyWith<$Res> {
+  __$GroceryProductCopyWithImpl(
+      _GroceryProduct _value, $Res Function(_GroceryProduct) _then)
+      : super(_value, (v) => _then(v as _GroceryProduct));
+
+  @override
+  _GroceryProduct get _value => super._value as _GroceryProduct;
+
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? groceryId = freezed,
+    Object? productId = freezed,
+    Object? quantity = freezed,
+    Object? product = freezed,
+    Object? unit = freezed,
+  }) {
+    return _then(_GroceryProduct(
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      groceryId: groceryId == freezed
+          ? _value.groceryId
+          : groceryId // ignore: cast_nullable_to_non_nullable
+              as String,
+      productId: productId == freezed
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as String,
+      quantity: quantity == freezed
+          ? _value.quantity
+          : quantity // ignore: cast_nullable_to_non_nullable
+              as int,
+      product: product == freezed
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as Product?,
+      unit: unit == freezed
+          ? _value.unit
+          : unit // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+@JsonSerializable()
+
+/// @nodoc
+class _$_GroceryProduct implements _GroceryProduct {
+  const _$_GroceryProduct(
+      {required this.id,
+      @JsonKey(name: 'grocery_id') required this.groceryId,
+      @JsonKey(name: 'product_id') required this.productId,
+      required this.quantity,
+      @JsonKey(name: 'products') this.product,
+      this.unit = ''});
+
+  factory _$_GroceryProduct.fromJson(Map<String, dynamic> json) =>
+      _$_$_GroceryProductFromJson(json);
+
+  @override
+  final String id;
+  @override
+  @JsonKey(name: 'grocery_id')
+  final String groceryId;
+  @override
+  @JsonKey(name: 'product_id')
+  final String productId;
+  @override
+  final int quantity;
+  @override
+  @JsonKey(name: 'products')
+  final Product? product;
+  @JsonKey(defaultValue: '')
+  @override
+  final String? unit;
+
+  @override
+  String toString() {
+    return 'GroceryProduct(id: $id, groceryId: $groceryId, productId: $productId, quantity: $quantity, product: $product, unit: $unit)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _GroceryProduct &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)) &&
+            (identical(other.groceryId, groceryId) ||
+                const DeepCollectionEquality()
+                    .equals(other.groceryId, groceryId)) &&
+            (identical(other.productId, productId) ||
+                const DeepCollectionEquality()
+                    .equals(other.productId, productId)) &&
+            (identical(other.quantity, quantity) ||
+                const DeepCollectionEquality()
+                    .equals(other.quantity, quantity)) &&
+            (identical(other.product, product) ||
+                const DeepCollectionEquality()
+                    .equals(other.product, product)) &&
+            (identical(other.unit, unit) ||
+                const DeepCollectionEquality().equals(other.unit, unit)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(id) ^
+      const DeepCollectionEquality().hash(groceryId) ^
+      const DeepCollectionEquality().hash(productId) ^
+      const DeepCollectionEquality().hash(quantity) ^
+      const DeepCollectionEquality().hash(product) ^
+      const DeepCollectionEquality().hash(unit);
+
+  @JsonKey(ignore: true)
+  @override
+  _$GroceryProductCopyWith<_GroceryProduct> get copyWith =>
+      __$GroceryProductCopyWithImpl<_GroceryProduct>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$_$_GroceryProductToJson(this);
+  }
+}
+
+abstract class _GroceryProduct implements GroceryProduct {
+  const factory _GroceryProduct(
+      {required String id,
+      @JsonKey(name: 'grocery_id') required String groceryId,
+      @JsonKey(name: 'product_id') required String productId,
+      required int quantity,
+      @JsonKey(name: 'products') Product? product,
+      String? unit}) = _$_GroceryProduct;
+
+  factory _GroceryProduct.fromJson(Map<String, dynamic> json) =
+      _$_GroceryProduct.fromJson;
+
+  @override
+  String get id => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'grocery_id')
+  String get groceryId => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'product_id')
+  String get productId => throw _privateConstructorUsedError;
+  @override
+  int get quantity => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(name: 'products')
+  Product? get product => throw _privateConstructorUsedError;
+  @override
+  String? get unit => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  _$GroceryProductCopyWith<_GroceryProduct> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+GroceryProductDto _$GroceryProductDtoFromJson(Map<String, dynamic> json) {
+  return _GroceryProductDto.fromJson(json);
+}
+
+/// @nodoc
+class _$GroceryProductDtoTearOff {
+  const _$GroceryProductDtoTearOff();
+
+  _GroceryProductDto call(
+      {@JsonKey(name: 'grocery_id') required String groceryId,
+      @JsonKey(name: 'product_id') required String productId,
+      int quantity = 1,
+      String? unit}) {
+    return _GroceryProductDto(
+      groceryId: groceryId,
+      productId: productId,
+      quantity: quantity,
+      unit: unit,
+    );
+  }
+
+  GroceryProductDto fromJson(Map<String, Object> json) {
+    return GroceryProductDto.fromJson(json);
+  }
+}
+
+/// @nodoc
+const $GroceryProductDto = _$GroceryProductDtoTearOff();
+
+/// @nodoc
+mixin _$GroceryProductDto {
+  @JsonKey(name: 'grocery_id')
+  String get groceryId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'product_id')
+  String get productId => throw _privateConstructorUsedError;
+  int get quantity => throw _privateConstructorUsedError;
+  String? get unit => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GroceryProductDtoCopyWith<GroceryProductDto> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GroceryProductDtoCopyWith<$Res> {
+  factory $GroceryProductDtoCopyWith(
+          GroceryProductDto value, $Res Function(GroceryProductDto) then) =
+      _$GroceryProductDtoCopyWithImpl<$Res>;
+  $Res call(
+      {@JsonKey(name: 'grocery_id') String groceryId,
+      @JsonKey(name: 'product_id') String productId,
+      int quantity,
+      String? unit});
+}
+
+/// @nodoc
+class _$GroceryProductDtoCopyWithImpl<$Res>
+    implements $GroceryProductDtoCopyWith<$Res> {
+  _$GroceryProductDtoCopyWithImpl(this._value, this._then);
+
+  final GroceryProductDto _value;
+  // ignore: unused_field
+  final $Res Function(GroceryProductDto) _then;
+
+  @override
+  $Res call({
+    Object? groceryId = freezed,
+    Object? productId = freezed,
+    Object? quantity = freezed,
+    Object? unit = freezed,
+  }) {
+    return _then(_value.copyWith(
       groceryId: groceryId == freezed
           ? _value.groceryId
           : groceryId // ignore: cast_nullable_to_non_nullable
@@ -1088,44 +1398,38 @@ class _$GroceryProductCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$GroceryProductCopyWith<$Res>
-    implements $GroceryProductCopyWith<$Res> {
-  factory _$GroceryProductCopyWith(
-          _GroceryProduct value, $Res Function(_GroceryProduct) then) =
-      __$GroceryProductCopyWithImpl<$Res>;
+abstract class _$GroceryProductDtoCopyWith<$Res>
+    implements $GroceryProductDtoCopyWith<$Res> {
+  factory _$GroceryProductDtoCopyWith(
+          _GroceryProductDto value, $Res Function(_GroceryProductDto) then) =
+      __$GroceryProductDtoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String id,
-      @JsonKey(name: 'grocery_id') String groceryId,
+      {@JsonKey(name: 'grocery_id') String groceryId,
       @JsonKey(name: 'product_id') String productId,
       int quantity,
       String? unit});
 }
 
 /// @nodoc
-class __$GroceryProductCopyWithImpl<$Res>
-    extends _$GroceryProductCopyWithImpl<$Res>
-    implements _$GroceryProductCopyWith<$Res> {
-  __$GroceryProductCopyWithImpl(
-      _GroceryProduct _value, $Res Function(_GroceryProduct) _then)
-      : super(_value, (v) => _then(v as _GroceryProduct));
+class __$GroceryProductDtoCopyWithImpl<$Res>
+    extends _$GroceryProductDtoCopyWithImpl<$Res>
+    implements _$GroceryProductDtoCopyWith<$Res> {
+  __$GroceryProductDtoCopyWithImpl(
+      _GroceryProductDto _value, $Res Function(_GroceryProductDto) _then)
+      : super(_value, (v) => _then(v as _GroceryProductDto));
 
   @override
-  _GroceryProduct get _value => super._value as _GroceryProduct;
+  _GroceryProductDto get _value => super._value as _GroceryProductDto;
 
   @override
   $Res call({
-    Object? id = freezed,
     Object? groceryId = freezed,
     Object? productId = freezed,
     Object? quantity = freezed,
     Object? unit = freezed,
   }) {
-    return _then(_GroceryProduct(
-      id: id == freezed
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_GroceryProductDto(
       groceryId: groceryId == freezed
           ? _value.groceryId
           : groceryId // ignore: cast_nullable_to_non_nullable
@@ -1149,25 +1453,23 @@ class __$GroceryProductCopyWithImpl<$Res>
 @JsonSerializable()
 
 /// @nodoc
-class _$_GroceryProduct implements _GroceryProduct {
-  const _$_GroceryProduct(
-      {required this.id,
-      @JsonKey(name: 'grocery_id') required this.groceryId,
+class _$_GroceryProductDto implements _GroceryProductDto {
+  const _$_GroceryProductDto(
+      {@JsonKey(name: 'grocery_id') required this.groceryId,
       @JsonKey(name: 'product_id') required this.productId,
-      required this.quantity,
+      this.quantity = 1,
       this.unit});
 
-  factory _$_GroceryProduct.fromJson(Map<String, dynamic> json) =>
-      _$_$_GroceryProductFromJson(json);
+  factory _$_GroceryProductDto.fromJson(Map<String, dynamic> json) =>
+      _$_$_GroceryProductDtoFromJson(json);
 
-  @override
-  final String id;
   @override
   @JsonKey(name: 'grocery_id')
   final String groceryId;
   @override
   @JsonKey(name: 'product_id')
   final String productId;
+  @JsonKey(defaultValue: 1)
   @override
   final int quantity;
   @override
@@ -1175,15 +1477,13 @@ class _$_GroceryProduct implements _GroceryProduct {
 
   @override
   String toString() {
-    return 'GroceryProduct(id: $id, groceryId: $groceryId, productId: $productId, quantity: $quantity, unit: $unit)';
+    return 'GroceryProductDto(groceryId: $groceryId, productId: $productId, quantity: $quantity, unit: $unit)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _GroceryProduct &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
+        (other is _GroceryProductDto &&
             (identical(other.groceryId, groceryId) ||
                 const DeepCollectionEquality()
                     .equals(other.groceryId, groceryId)) &&
@@ -1200,7 +1500,6 @@ class _$_GroceryProduct implements _GroceryProduct {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(groceryId) ^
       const DeepCollectionEquality().hash(productId) ^
       const DeepCollectionEquality().hash(quantity) ^
@@ -1208,28 +1507,25 @@ class _$_GroceryProduct implements _GroceryProduct {
 
   @JsonKey(ignore: true)
   @override
-  _$GroceryProductCopyWith<_GroceryProduct> get copyWith =>
-      __$GroceryProductCopyWithImpl<_GroceryProduct>(this, _$identity);
+  _$GroceryProductDtoCopyWith<_GroceryProductDto> get copyWith =>
+      __$GroceryProductDtoCopyWithImpl<_GroceryProductDto>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_GroceryProductToJson(this);
+    return _$_$_GroceryProductDtoToJson(this);
   }
 }
 
-abstract class _GroceryProduct implements GroceryProduct {
-  const factory _GroceryProduct(
-      {required String id,
-      @JsonKey(name: 'grocery_id') required String groceryId,
+abstract class _GroceryProductDto implements GroceryProductDto {
+  const factory _GroceryProductDto(
+      {@JsonKey(name: 'grocery_id') required String groceryId,
       @JsonKey(name: 'product_id') required String productId,
-      required int quantity,
-      String? unit}) = _$_GroceryProduct;
+      int quantity,
+      String? unit}) = _$_GroceryProductDto;
 
-  factory _GroceryProduct.fromJson(Map<String, dynamic> json) =
-      _$_GroceryProduct.fromJson;
+  factory _GroceryProductDto.fromJson(Map<String, dynamic> json) =
+      _$_GroceryProductDto.fromJson;
 
-  @override
-  String get id => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'grocery_id')
   String get groceryId => throw _privateConstructorUsedError;
@@ -1242,7 +1538,7 @@ abstract class _GroceryProduct implements GroceryProduct {
   String? get unit => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$GroceryProductCopyWith<_GroceryProduct> get copyWith =>
+  _$GroceryProductDtoCopyWith<_GroceryProductDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

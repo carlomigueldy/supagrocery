@@ -26,7 +26,8 @@ _$_Grocery _$_$_GroceryFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     name: json['name'] as String,
     createdBy: json['created_by'] as String,
-    products: Grocery._productsFromJson(json['products'] as List?),
+    groceryProducts:
+        Grocery._productsFromJson(json['grocery_products'] as List?),
   );
 }
 
@@ -35,7 +36,7 @@ Map<String, dynamic> _$_$_GroceryToJson(_$_Grocery instance) =>
       'id': instance.id,
       'name': instance.name,
       'created_by': instance.createdBy,
-      'products': Grocery._productsToJson(instance.products),
+      'grocery_products': Grocery._productsToJson(instance.groceryProducts),
     };
 
 _$_GroceryDto _$_$_GroceryDtoFromJson(Map<String, dynamic> json) {
@@ -85,13 +86,35 @@ _$_GroceryProduct _$_$_GroceryProductFromJson(Map<String, dynamic> json) {
     groceryId: json['grocery_id'] as String,
     productId: json['product_id'] as String,
     quantity: json['quantity'] as int,
-    unit: json['unit'] as String?,
+    product: json['products'] == null
+        ? null
+        : Product.fromJson(json['products'] as Map<String, dynamic>),
+    unit: json['unit'] as String? ?? '',
   );
 }
 
 Map<String, dynamic> _$_$_GroceryProductToJson(_$_GroceryProduct instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'grocery_id': instance.groceryId,
+      'product_id': instance.productId,
+      'quantity': instance.quantity,
+      'products': instance.product,
+      'unit': instance.unit,
+    };
+
+_$_GroceryProductDto _$_$_GroceryProductDtoFromJson(Map<String, dynamic> json) {
+  return _$_GroceryProductDto(
+    groceryId: json['grocery_id'] as String,
+    productId: json['product_id'] as String,
+    quantity: json['quantity'] as int? ?? 1,
+    unit: json['unit'] as String?,
+  );
+}
+
+Map<String, dynamic> _$_$_GroceryProductDtoToJson(
+        _$_GroceryProductDto instance) =>
+    <String, dynamic>{
       'grocery_id': instance.groceryId,
       'product_id': instance.productId,
       'quantity': instance.quantity,

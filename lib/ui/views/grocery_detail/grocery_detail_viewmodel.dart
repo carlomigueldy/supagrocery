@@ -1,8 +1,8 @@
 import 'package:logger/logger.dart';
+import 'package:postgrest/postgrest.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:supagrocery/app/app.locator.dart';
-import 'package:supagrocery/app/app.router.dart';
 import 'package:supagrocery/datamodels/application_models.dart';
 import 'package:supagrocery/services/grocery_service.dart';
 import 'package:supagrocery/ui/views/product_selection/product_selection_view.dart';
@@ -16,9 +16,13 @@ class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
 
   GroceryDetailViewModel({required this.id});
 
-  bool get hasProducts => data!.products!.length > 0;
+  bool get hasProducts {
+    if (data == null) return false;
 
-  List<Product> get products => data!.products ?? [];
+    return data!.products!.length > 0;
+  }
+
+  List<GroceryProduct?>? get products => data!.groceryProducts ?? [];
 
   @override
   Future<Grocery?> futureToRun() async {
@@ -43,8 +47,53 @@ class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
 
   void toProductSelectionView() {
     _navigationService.navigateWithTransition(
-      ProductSelectionView(),
+      ProductSelectionView(groceryId: id),
       transition: 'downToUp',
     );
+  }
+
+  Future<void> removeProduct(String id) async {
+    try {
+      final PostgrestResponse response = await runBusyFuture(
+        _groceryService.removeProduct(id: id),
+        busyObject: id,
+        throwException: true,
+      );
+
+      if (response.error != null) {
+        _logger.e(response.error!.message);
+        return null;
+      }
+
+      data!.groceryProducts!.removeWhere((element) => element.id == id);
+      notifyListeners();
+
+      _logger.i(response.toJson());
+    } catch (e) {
+      _logger.e(e);
+    }
+  }
+
+  Future<void> markProductChecked(GroceryProduct item) async {
+    try {
+      final response = await _groceryService.markProductChecked(payload: item);
+
+      if (response.error != null) {
+        _logger.e(response.error!.message);
+        return null;
+      }
+
+      await futureToRun();
+      notifyListeners();
+
+      _logger.i('message');
+    } catch (e) {
+      _logger.e(e);
+    }
+  }
+
+  Future<void> onRefreshList() async {
+    await futureToRun();
+    notifyListeners();
   }
 }

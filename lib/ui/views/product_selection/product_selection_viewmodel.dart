@@ -5,6 +5,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:supagrocery/app/app.locator.dart';
 import 'package:supagrocery/app/app.router.dart';
 import 'package:supagrocery/datamodels/application_models.dart';
+import 'package:supagrocery/services/grocery_service.dart';
 import 'package:supagrocery/services/product_service.dart';
 
 class ProductSelectionViewModel extends FutureViewModel<List<Product>?> {
@@ -12,6 +13,11 @@ class ProductSelectionViewModel extends FutureViewModel<List<Product>?> {
   final _productService = locator<ProductService>();
   final _navigationServce = locator<NavigationService>();
   final _snackbarService = locator<SnackbarService>();
+  final _groceryService = locator<GroceryService>();
+
+  final String groceryId;
+
+  ProductSelectionViewModel({required this.groceryId});
 
   bool get hasProducts {
     if (data == null) return false;
@@ -55,6 +61,8 @@ class ProductSelectionViewModel extends FutureViewModel<List<Product>?> {
         return;
       }
 
+      data!.removeWhere((element) => element.id == id);
+      notifyListeners();
       _snackbarService.showSnackbar(
         title: 'Success',
         message: 'Product deleted.',
@@ -64,5 +72,27 @@ class ProductSelectionViewModel extends FutureViewModel<List<Product>?> {
     } finally {
       notifyListeners();
     }
+  }
+
+  Future<void> addToList(List<Product?> selectedProducts) async {
+    final response = await _groceryService.addProductsToList(
+      id: groceryId,
+      products: selectedProducts,
+    );
+
+    if (response.error != null) {
+      _logger.e(response.error!.message);
+      return;
+    }
+
+    _navigationServce.replaceWith(
+      Routes.groceryDetailView,
+      arguments: GroceryDetailViewArguments(id: groceryId),
+    );
+  }
+
+  Future<void> onRefreshList() async {
+    await futureToRun();
+    notifyListeners();
   }
 }

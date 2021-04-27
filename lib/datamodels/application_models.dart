@@ -17,26 +17,42 @@ class AppUser with _$AppUser {
 
 @freezed
 class Grocery with _$Grocery {
+  const Grocery._();
   const factory Grocery({
     required String id,
     required String name,
-    @JsonKey(name: 'created_by') required String createdBy,
-    @JsonKey(fromJson: Grocery._productsFromJson, toJson: Grocery._productsToJson)
-        List<Product>? products,
+    @JsonKey(name: 'created_by')
+        required String createdBy,
+    @Default([])
+    @JsonKey(
+      name: 'grocery_products',
+      fromJson: Grocery._productsFromJson,
+      toJson: Grocery._productsToJson,
+    )
+        List<GroceryProduct>? groceryProducts,
   }) = _Grocery;
+
+  bool get hasGroceryProducts => groceryProducts!.length > 0;
+
+  List<Product?>? get products {
+    if (!hasGroceryProducts) return [];
+
+    return groceryProducts!.map((e) => e.product).toList();
+  }
 
   factory Grocery.fromJson(Map<String, dynamic> json) =>
       _$GroceryFromJson(json);
 
-  static List<Product>? _productsFromJson(List<dynamic>? list) {
+  static List<GroceryProduct>? _productsFromJson(List<dynamic>? list) {
     if (list == null) {
       return [];
     }
 
-    return list.map((e) => Product.fromJson(e)).toList();
+    return list.map((e) => GroceryProduct.fromJson(e)).toList();
   }
 
-  static List<Map<String, dynamic>>? _productsToJson(List<Product>? list) {
+  static List<Map<String, dynamic>>? _productsToJson(
+      List<GroceryProduct>? list) {
     if (list == null) {
       return [];
     }
@@ -86,11 +102,25 @@ class GroceryProduct with _$GroceryProduct {
     @JsonKey(name: 'grocery_id') required String groceryId,
     @JsonKey(name: 'product_id') required String productId,
     required int quantity,
-    String? unit,
+    @JsonKey(name: 'products') Product? product,
+    @Default('') String? unit,
   }) = _GroceryProduct;
 
   factory GroceryProduct.fromJson(Map<String, dynamic> json) =>
       _$GroceryProductFromJson(json);
+}
+
+@freezed
+class GroceryProductDto with _$GroceryProductDto {
+  const factory GroceryProductDto({
+    @JsonKey(name: 'grocery_id') required String groceryId,
+    @JsonKey(name: 'product_id') required String productId,
+    @Default(1) int quantity,
+    String? unit,
+  }) = _GroceryProductDto;
+
+  factory GroceryProductDto.fromJson(Map<String, dynamic> json) =>
+      _$GroceryProductDtoFromJson(json);
 }
 
 @freezed
