@@ -52,10 +52,11 @@ class _ProductSelectionViewState extends State<ProductSelectionView> {
           appBar: AppBar(
             title: Text('Select Product(s)'),
           ),
-          floatingActionButton: _hasSelectedProducts
-              ? ExtendedFab(
-                  viewModel: viewModel, selectedProducts: _selectedProducts)
-              : _Fab(viewModel: viewModel),
+          floatingActionButton:
+              _hasSelectedProducts && !viewModel.isGroceryIdEmpty
+                  ? _ExtendedFab(
+                      viewModel: viewModel, selectedProducts: _selectedProducts)
+                  : _Fab(viewModel: viewModel),
           body: _body(viewModel: viewModel),
         );
       },
@@ -135,11 +136,11 @@ class _ProductSelectionViewState extends State<ProductSelectionView> {
   }
 }
 
-class ExtendedFab extends StatelessWidget {
+class _ExtendedFab extends StatelessWidget {
   final ProductSelectionViewModel viewModel;
   final List<Product?> selectedProducts;
 
-  const ExtendedFab({
+  const _ExtendedFab({
     Key? key,
     required this.viewModel,
     required this.selectedProducts,

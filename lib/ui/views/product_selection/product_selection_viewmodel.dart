@@ -25,6 +25,8 @@ class ProductSelectionViewModel extends FutureViewModel<List<Product>?> {
     return data!.length > 0;
   }
 
+  bool get isGroceryIdEmpty => groceryId.isEmpty;
+
   @override
   Future<List<Product>?> futureToRun() async {
     return await _fetchProducts();

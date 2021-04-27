@@ -91,4 +91,9 @@ class HomeViewModel extends FutureViewModel<List<Grocery>> {
     _authService.signOut();
     _navigationService.replaceWith(Routes.signInView);
   }
+
+  Future<void> onRefresh() async {
+    await futureToRun();
+    notifyListeners();
+  }
 }

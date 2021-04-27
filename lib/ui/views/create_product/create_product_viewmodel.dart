@@ -44,7 +44,10 @@ class CreateProductViewModel extends FormViewModel {
         message: 'A product has been created',
       );
 
-      _navigationService.pushNamedAndRemoveUntil(Routes.productSelectionView);
+      _navigationService.replaceWith(
+        Routes.productSelectionView,
+        arguments: ProductSelectionViewArguments(groceryId: ''),
+      );
     } catch (e) {
       _logger.e(e.toString());
     } finally {

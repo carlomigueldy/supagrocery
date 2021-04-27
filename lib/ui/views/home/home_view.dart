@@ -65,27 +65,31 @@ class _Body extends StatelessWidget {
       return Center(child: CircularProgressIndicator());
     }
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: 30),
-          AppHPadding(
-            child: Text(
-              'Welcome back ${viewModel.user!.name}',
-              style: TextStyle(
-                fontSize: 24,
+    return RefreshIndicator(
+      onRefresh: viewModel.onRefresh,
+      child: SingleChildScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 30),
+            AppHPadding(
+              child: Text(
+                'Welcome back ${viewModel.user!.name}',
+                style: TextStyle(
+                  fontSize: 24,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 30),
-          if (viewModel.data!.length == 0)
-            AppHPadding(child: _NoData())
-          else
-            _list()
-        ],
+            SizedBox(height: 30),
+            if (viewModel.data!.length == 0)
+              AppHPadding(child: _NoData())
+            else
+              _list()
+          ],
+        ),
       ),
     );
   }
