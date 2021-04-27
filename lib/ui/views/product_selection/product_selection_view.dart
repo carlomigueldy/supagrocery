@@ -19,6 +19,10 @@ class ProductSelectionView
       appBar: AppBar(
         title: Text('Select Product(s)'),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: viewModel.toCreateProductView,
+      ),
       body: _Body(viewModel: viewModel),
     );
   }
@@ -71,8 +75,8 @@ class _Body extends StatelessWidget {
 
         return Dismissible(
           key: Key(item.id),
-          onDismissed: (direction) {
-            print(direction.index);
+          onDismissed: (_) {
+            viewModel.deleteProduct(item.id);
           },
           child: ListTile(
             title: Text(item.name.isNotEmpty ? item.name : 'Unnamed'),

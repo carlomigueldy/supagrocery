@@ -11,6 +11,7 @@ class ProductSelectionViewModel extends FutureViewModel<List<Product>?> {
   final _logger = Logger();
   final _productService = locator<ProductService>();
   final _navigationServce = locator<NavigationService>();
+  final _snackbarService = locator<SnackbarService>();
 
   bool get hasProducts {
     if (data == null) return false;
@@ -40,5 +41,28 @@ class ProductSelectionViewModel extends FutureViewModel<List<Product>?> {
     _navigationServce.navigateTo(Routes.createProductView);
   }
 
-  void deleteProduct(DismissDirection direction) {}
+  Future<void> deleteProduct(String id) async {
+    try {
+      final response = await _productService.delete(id);
+
+      if (response.error != null) {
+        final errorMessage = response.error!.message;
+        _snackbarService.showSnackbar(
+          title: 'Error',
+          message: errorMessage,
+        );
+        _logger.e(errorMessage);
+        return;
+      }
+
+      _snackbarService.showSnackbar(
+        title: 'Success',
+        message: 'Product deleted.',
+      );
+    } catch (e) {
+      _logger.e(e);
+    } finally {
+      notifyListeners();
+    }
+  }
 }
