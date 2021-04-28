@@ -11,6 +11,7 @@ class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
   final _logger = Logger();
   final _navigationService = locator<NavigationService>();
   final _groceryService = locator<GroceryService>();
+  final _bottomSheetService = locator<BottomSheetService>();
 
   final String id;
 
@@ -95,5 +96,12 @@ class GroceryDetailViewModel extends FutureViewModel<Grocery?> {
   Future<void> onRefreshList() async {
     await futureToRun();
     notifyListeners();
+  }
+
+  Future<void> deleteAllItem() async {
+    _bottomSheetService.showBottomSheet(
+      title: 'Delete All',
+      description: 'Are you sure you want to delete all items in this list?',
+    );
   }
 }

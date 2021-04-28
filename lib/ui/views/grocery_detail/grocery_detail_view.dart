@@ -32,6 +32,13 @@ class _GroceryDetailViewState extends State<GroceryDetailView> {
         return Scaffold(
           appBar: AppBar(
             title: viewModel.isBusy ? Text('Loading...') : _title(viewModel),
+            actions: [
+              IconButton(
+                icon: Icon(Icons.delete_outlined),
+                onPressed:
+                    viewModel.hasProducts ? viewModel.deleteAllItem : null,
+              )
+            ],
           ),
           floatingActionButton: FloatingActionButton(
             child: Icon(Icons.add),
@@ -108,7 +115,9 @@ class _GroceryDetailViewState extends State<GroceryDetailView> {
   }
 
   PopupMenuButton<String> _popupMenuButton(
-      GroceryDetailViewModel viewModel, GroceryProduct item) {
+    GroceryDetailViewModel viewModel,
+    GroceryProduct item,
+  ) {
     return PopupMenuButton(
       onSelected: (String value) {
         switch (value) {
