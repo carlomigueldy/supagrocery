@@ -3,6 +3,8 @@ import 'package:stacked/stacked.dart';
 import 'package:supagrocery/datamodels/application_models.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_button.dart';
 import 'package:supagrocery/ui/widgets/dumb_widgets/app_padding.dart';
+import 'package:supagrocery/ui/widgets/dumb_widgets/supabase_logo.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'home_viewmodel.dart';
 
@@ -24,16 +26,7 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
       appBar: AppBar(
         title: Text('SupaGrocery'),
       ),
-      drawer: Drawer(
-        child: AppHPadding(
-          child: Center(
-            child: AppButton(
-              label: 'Logout',
-              onPressed: viewModel.signOut,
-            ),
-          ),
-        ),
-      ),
+      drawer: _Drawer(viewModel: viewModel),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: viewModel.toCreateGroceryView,
@@ -48,6 +41,67 @@ class HomeView extends ViewModelBuilderWidget<HomeViewModel> {
   @override
   HomeViewModel viewModelBuilder(BuildContext context) {
     return HomeViewModel();
+  }
+}
+
+class _Drawer extends StatelessWidget {
+  final HomeViewModel viewModel;
+
+  const _Drawer({
+    Key? key,
+    required this.viewModel,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: AppHPadding(
+        child: Column(
+          children: [
+            AppVPadding(
+              padding: 75,
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SupabaseLogo(),
+                    ],
+                  ),
+                  AppVPadding(
+                    child: Text(
+                      'SupaGrocery',
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            ListTile(
+              title: Text('Buy me a coffee ☕', style: TextStyle(fontSize: 16)),
+              onTap: () => launch('https://www.buymeacoffee.com/carlomigueldy'),
+            ),
+            ListTile(
+              title: Text('@CarloMiguelDy 🐦', style: TextStyle(fontSize: 16)),
+              onTap: () => launch('https://twitter.com/CarloMiguelDy'),
+            ),
+            ListTile(
+              title: Text('GitHub 🖥️', style: TextStyle(fontSize: 16)),
+              onTap: () => launch('https://github.com/carlomigueldy'),
+            ),
+            Spacer(),
+            AppVPadding(
+              child: AppButton(
+                label: 'Logout',
+                onPressed: viewModel.signOut,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
