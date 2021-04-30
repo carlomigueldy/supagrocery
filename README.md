@@ -1,5 +1,4 @@
-# Stacked Starter Template
+# SupaGrocery
 
-A Flutter starter template using stacked architecture.
-
+A simple grocery application built with Flutter and Supabase as backend.
 
